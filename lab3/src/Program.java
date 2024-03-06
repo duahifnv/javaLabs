@@ -9,7 +9,8 @@ public class Program {
             System.out.println("Заданы непредвиденные параметры");
             System.exit(-1);
         }
-        System.out.println("Лабораторная работа №" + String.valueOf(labId));
+        System.out.println("Лабораторная работа №3");
+        System.out.println("Задача №" + String.valueOf(labId));
         switch (labId) {
             case 1:
             Lab3.t1();
@@ -24,10 +25,10 @@ public class Program {
             Lab3.t4();
             break;
             case 5:
-            // Lab3.t5();
+            Lab3.t5();
             break;
             case 6:
-            // Lab3.t6();
+            Lab3.t6();
             break;
             case 7:
             // Lab3.t7();

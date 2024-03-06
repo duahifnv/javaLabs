@@ -98,6 +98,10 @@ public class Lab3 {
         // см. Lab3.t4()
     }
     public static void t6() {
-
+        double MathCadSolve = 1.4682818284590449;
+        double[][] steps = LeftRect.CreateSteps(0, 1, 101);
+        double answer = LeftRect.Integrate(steps[0], steps[1]);
+        System.out.println("Интеграл через метод левых прямоугольников: " + answer);
+        System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
     }
 }
