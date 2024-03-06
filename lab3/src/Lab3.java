@@ -69,4 +69,35 @@ public class Lab3 {
         }
         System.out.printf("Упорядоченный массив%n%s", Arrays.deepToString(array));
     }
+    public static void t4() {
+        Scanner scan = new Scanner(System.in);
+        int val;
+        int vals[] = new int[6];
+        String[] lits = {"x", "y", "r"};
+        int i = 0;
+        while (i < 6) {
+            System.out.printf("Введите %s: ", lits[i % 3] + String.valueOf((i / 3) + 1));
+            try {
+                val = scan.nextInt();
+                if((lits[i % 3]) == "r" && val <= 0) {
+                    System.out.println("Радиус должен быть положительным");
+                    continue;
+                }
+            } catch (Exception e) {
+                System.out.println("Введено неверное значение");
+                scan.nextLine();
+                continue;
+            }
+            vals[i] = val;
+            i++;
+        }
+        CirclesState.SolveState(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5]);
+        System.out.println(CirclesState.GetCode());
+    }
+    public static void t5() {
+        // см. Lab3.t4()
+    }
+    public static void t6() {
+
+    }
 }
