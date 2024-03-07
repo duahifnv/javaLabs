@@ -31,7 +31,7 @@ public class Program {
             Lab3.t6();
             break;
             case 7:
-            // Lab3.t7();
+            Lab3.t7();
             break;
             default:
             System.out.println("Неверный номер задачи");

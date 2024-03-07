@@ -93,6 +93,7 @@ public class Lab3 {
         }
         CirclesState.SolveState(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5]);
         System.out.println(CirclesState.GetCode());
+        scan.close();
     }
     public static void t5() {
         // см. Lab3.t4()
@@ -103,5 +104,29 @@ public class Lab3 {
         double answer = LeftRect.Integrate(steps[0], steps[1]);
         System.out.println("Интеграл через метод левых прямоугольников: " + answer);
         System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
+    }
+    public static void t7() {
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Введите число в 10СС: ");
+        int num = scan.nextInt();
+        int base;
+        while (true) {
+            System.out.println("Введите СС (2-8): ");
+            try {
+                base = scan.nextInt();
+                if (base > 8 || base < 2) {
+                    System.out.println("Система должна быть в диапазоне от 2 до 8");
+                    continue;
+                }
+            } catch (Exception e) {
+                System.out.println("Введено не числовое значение");
+                scan.nextLine();
+                continue;
+            }
+            break;
+        }
+        scan.close();
+        System.out.printf("Мой метод - Число %d в %d-ичной СС: %d%n", num, base, DecToBase.ConvertTo(num, base));
+        System.out.printf("Метод toString - Число %d в %d-ичной СС: %s%n ", num, base, Integer.toString(num, base));
     }
 }
