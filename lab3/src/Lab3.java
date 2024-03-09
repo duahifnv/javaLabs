@@ -1,6 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.function.DoubleBinaryOperator;
 
 public class Lab3 {
     public static void t1() {
@@ -111,20 +112,26 @@ public class Lab3 {
         System.out.printf("Мой метод - Число %d в %d-ичной СС: %d%n", num, base, DecToBase.ConvertTo(num, base));
         System.out.printf("Метод toString - Число %d в %d-ичной СС: %s%n ", num, base, Integer.toString(num, base));
     }
-    // public static void t8() {
-    //     int size;
-    //     Scanner scan = new Scanner(System.in);
-    //     while (true) {
-    //         System.out.println("Введите разряд полинома: ");
-    //         try {
-    //             size = scan.nextInt();
-    //             if (size <= 0) {
-    //                 System.out.println("Разряд должен быть в диапазоне от ");
-    //             }
-    //         } catch (Exception e) {
-    //             // TODO: handle exception
-    //         }
-    //     }
-    //     int[] coefs = new
-    // }
+    public static void t8() {
+        int size = (int) Input.Double(1, 20, "Введите число коэфициентов");
+        int[] coefs = new int[size];
+        for (int i = 0; i < size; i++) {
+            coefs[i] = (int) Input.Double(-50,
+             50, "Введите a"  + (size - i - 1));
+        }
+        // P = (a2 * x + a1) * x + a0
+        int x = (int) Input.Double(-50, 50, "Введите X");
+        int poly = coefs[0] * x + coefs[1];
+        String stdPoly = "P = " + "(".repeat(size - 1) + coefs[0] + "x + " + coefs[1] + ")";
+        String valPoly = "P = " + "(".repeat(size - 1) + coefs[0] + " * " + x + " + " + coefs[1] + ")";
+        for (int i = 2; i < size; i++) {
+            poly = poly * x + coefs[i];
+            stdPoly += "x + " + coefs[i] + ")";
+            valPoly += " * " + x + " + " + coefs[i] + ")";
+        }
+        stdPoly += " = " + poly;
+        valPoly += " = " + poly;
+        System.out.println(stdPoly + "\n" + valPoly);
+
+    }
 }
