@@ -1,7 +1,8 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.function.DoubleBinaryOperator;
+import java.util.regex.*;
 
 public class Lab3 {
     public static void t1() {
@@ -114,7 +115,9 @@ public class Lab3 {
     }
     public static void t8() {
         int size = (int) Input.Double(1, 20, "Введите число коэфициентов");
-        int[] coefs = new int[size];
+        int alloc_size = (size > 1) ? size : size + 1;
+        int[] coefs = new int[alloc_size];
+        if (size == 1) coefs[1] = 0;
         for (int i = 0; i < size; i++) {
             coefs[i] = (int) Input.Double(-50,
              50, "Введите a"  + (size - i - 1));
@@ -122,8 +125,8 @@ public class Lab3 {
         // P = (a2 * x + a1) * x + a0
         int x = (int) Input.Double(-50, 50, "Введите X");
         int poly = coefs[0] * x + coefs[1];
-        String stdPoly = "P = " + "(".repeat(size - 1) + coefs[0] + "x + " + coefs[1] + ")";
-        String valPoly = "P = " + "(".repeat(size - 1) + coefs[0] + " * " + x + " + " + coefs[1] + ")";
+        String stdPoly = "P = " + "(".repeat(alloc_size - 1) + coefs[0] + "x + " + coefs[1] + ")";
+        String valPoly = "P = " + "(".repeat(alloc_size - 1) + coefs[0] + " * " + x + " + " + coefs[1] + ")";
         for (int i = 2; i < size; i++) {
             poly = poly * x + coefs[i];
             stdPoly += "x + " + coefs[i] + ")";
@@ -132,6 +135,46 @@ public class Lab3 {
         stdPoly += " = " + poly;
         valPoly += " = " + poly;
         System.out.println(stdPoly + "\n" + valPoly);
+    }
+    public static void t9(Boolean fullMatch) {
+        Regex ru = new Regex("Россия",
+                "((\\+7)|8)(([- ]?[0-9]{3}[- ]?)|([(][0-9]{3}[)]))([0-9]{3}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex[] regs = {ru, ro};
 
+        System.out.print("Введите строку: ");
+        Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+
+        if (fullMatch) {
+            for (Regex re : regs) {
+                if (re.MatchLine(line)) System.out.println(re.GetLabel() + ": Корректный номер");
+                else System.out.println(re.GetLabel() + ": Некорректный номер");
+            }
+        }
+        else {
+            for (Regex re : regs) {
+                if (re.InLine(line)) System.out.println(re.GetLabel() + ": Содержится в строке");
+                else System.out.println(re.GetLabel() + ": Не содержится в строке");
+            }
+        }
+        scan.close();
+    }
+    public static void t10() {
+        Regex ru = new Regex("Россия",
+                "((\\+7)|8)(([- ]?[0-9]{3}[- ]?)|([(][0-9]{3}[)]))([0-9]{3}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+        Regex ro = new Regex("Ростов-на-Дону", "([2-3][- ]?)([0-9]{2}[- ]?)([0-9]{2}[- ]?)([0-9]{2})");
+
+        System.out.print("Введите строку: ");
+        Scanner scan = new Scanner(System.in);
+        String line = scan.nextLine();
+
+        ArrayList<String> nums = new ArrayList<>();
+        nums.addAll(ru.ExtractNums(line));
+        nums.addAll(ro.ExtractNums(line));
+
+        if(nums.size() == 0) System.out.println("В строке не найдено номеров");
+        else System.out.println("Найденные номера: " + nums.toString());
+        scan.close();
     }
 }
