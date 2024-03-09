@@ -9,7 +9,7 @@
             "name": "Launch with Arguments Prompt",
             "request": "launch",
             "mainClass": "",
-            "args": "6"
+            "args": "7"
         },
         {
             "type": "java",

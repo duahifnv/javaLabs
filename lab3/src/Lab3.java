@@ -106,27 +106,25 @@ public class Lab3 {
         System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
     }
     public static void t7() {
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Введите число в 10СС: ");
-        int num = scan.nextInt();
-        int base;
-        while (true) {
-            System.out.println("Введите СС (2-8): ");
-            try {
-                base = scan.nextInt();
-                if (base > 8 || base < 2) {
-                    System.out.println("Система должна быть в диапазоне от 2 до 8");
-                    continue;
-                }
-            } catch (Exception e) {
-                System.out.println("Введено не числовое значение");
-                scan.nextLine();
-                continue;
-            }
-            break;
-        }
-        scan.close();
+        int num = (int) Input.Double(0, Double.POSITIVE_INFINITY, "Введите число в 10СС");
+        int base = (int) Input.Double(2, 8, "Введите СС (2-8)");
         System.out.printf("Мой метод - Число %d в %d-ичной СС: %d%n", num, base, DecToBase.ConvertTo(num, base));
         System.out.printf("Метод toString - Число %d в %d-ичной СС: %s%n ", num, base, Integer.toString(num, base));
     }
+    // public static void t8() {
+    //     int size;
+    //     Scanner scan = new Scanner(System.in);
+    //     while (true) {
+    //         System.out.println("Введите разряд полинома: ");
+    //         try {
+    //             size = scan.nextInt();
+    //             if (size <= 0) {
+    //                 System.out.println("Разряд должен быть в диапазоне от ");
+    //             }
+    //         } catch (Exception e) {
+    //             // TODO: handle exception
+    //         }
+    //     }
+    //     int[] coefs = new
+    // }
 }

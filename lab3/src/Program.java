@@ -1,5 +1,3 @@
-import java.util.Arrays;
-
 public class Program {
     public static void main(String[] args) throws Exception {
         int labId = 1;
