@@ -11,37 +11,37 @@ public class Program {
         System.out.println("Задача №" + String.valueOf(labId));
         switch (labId) {
             case 1:
-            Lab3.t1();
-            break;
+                Lab3.t1();
+                break;
             case 2:
-            Lab3.t2(Integer.valueOf(args[1]), Integer.valueOf(args[2]), Boolean.valueOf(args[3]));
-            break;
+                Lab3.t2(Integer.valueOf(args[1]), Integer.valueOf(args[2]), Boolean.valueOf(args[3]));
+                break;
             case 3:
-            Lab3.t3();
-            break;
+                Lab3.t3();
+                break;
             case 4:
-            Lab3.t4();
-            break;
+                Lab3.t4();
+                break;
             case 5:
-            Lab3.t5();
-            break;
+                Lab3.t5();
+                break;
             case 6:
-            Lab3.t6();
-            break;
+                Lab3.t6();
+                break;
             case 7:
-            Lab3.t7();
-            break;
+                Lab3.t7();
+                break;
             case 8:
-            Lab3.t8();
-            break;
+                Lab3.t8();
+                break;
             case 9:
-            Lab3.t9(Boolean.valueOf(args[1]));
-            break;
+                Lab3.t9(Boolean.valueOf(args[1]));
+                break;
             case 10:
-            Lab3.t10();
-            break;
+                Lab3.t10();
+                break;
             default:
-            System.out.println("Неверный номер задачи");
+                System.out.println("Неверный номер задачи");
         }
     }
 }

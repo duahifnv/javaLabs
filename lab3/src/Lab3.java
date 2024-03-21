@@ -2,14 +2,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.regex.*;
 
 public class Lab3 {
     public static void t1() {
         System.out.println("Таблица значений функций");
         System.out.printf("%-10s| %-15s| %-15s\n", "x", "sin(x)", "e^x / x * lg(x)");
         double val1, val2;
-        String textArg;
         for (double arg = Math.PI/15; arg < Math.PI; arg += Math.PI/15) {
             val1 = Math.sin(arg);
             val2 = Math.exp(arg) / arg * Math.log(arg);
@@ -94,7 +92,7 @@ public class Lab3 {
             i++;
         }
         CirclesState.SolveState(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5]);
-        System.out.println(CirclesState.GetCode());
+        System.out.println(CirclesState.GetState());
         scan.close();
     }
     public static void t5() {
@@ -102,7 +100,7 @@ public class Lab3 {
     }
     public static void t6() {
         double MathCadSolve = 1.4682818284590449;
-        double[][] steps = LeftRect.CreateSteps(0, 1, 101);
+        double[][] steps = LeftRect.CreateSteps(0, 4, 101);
         double answer = LeftRect.Integrate(steps[0], steps[1]);
         System.out.println("Интеграл через метод левых прямоугольников: " + answer);
         System.out.println("Разница с Маткадом: +-" + Math.abs(answer - MathCadSolve));
