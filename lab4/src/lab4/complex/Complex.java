@@ -26,6 +26,9 @@ public class Complex {
     public String getTrigonometric() {
         return trigonometric;
     }
+    public Boolean isEqual(Complex z1, Complex z2) {
+        return (z1.getReal() == z2.getReal() && z1.getMnemo() == z2.getMnemo());
+    }
     public static String Sum(Complex z1, Complex z2) {
         double x = z1.getReal() + z2.getReal();
         double y = z1.getMnemo() + z2.getMnemo();
@@ -44,7 +47,7 @@ public class Complex {
     public static String Divide(Complex z1, Complex z2) {
         double xdiv = z1.getReal() * z2.getReal() + z1.getMnemo() * z2.getMnemo();
         double ydiv = z2.getReal() * z1.getMnemo() - z1.getReal() * z2.getMnemo();
-        double mod = Math.pow(z2.getReal(), 2) + Math.pow(z2.getMnemo(), 3);
+        double mod = Math.pow(z2.getReal(), 2) + Math.pow(z2.getMnemo(), 2);
         return String.format("%.02f + %.02f * i", xdiv / mod, ydiv / mod);
     }
 }
