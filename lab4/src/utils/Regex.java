@@ -16,6 +16,9 @@ public class Regex {
             System.exit(-1);
         }
     }
+    public static Boolean MatchLine(String exp, String line) {
+        return Pattern.matches(exp, line);
+    }
     public Boolean MatchLine(String line) {
         return Pattern.matches(exp, line);
     }
