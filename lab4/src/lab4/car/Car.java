@@ -39,6 +39,14 @@ public class Car {
         this.engine = engine;
         this.wheels_count = wheels_count;
     }
+    public Car(Type type, String model, String color, Engine engine, int wheels_count, String registerMark) {
+        this.type = type;
+        this.model = model;
+        this.color = color;
+        this.engine = engine;
+        this.wheels_count = wheels_count;
+        this.registerMark = registerMark;
+    }
     public void setEngine(int power, int volume, Fuel fuelType, int fuelConsumption, int numberOfCylinders, String serialCode) {
         this.engine = new Engine(power, volume, fuelType, fuelConsumption, numberOfCylinders, serialCode);
     }
