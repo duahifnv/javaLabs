@@ -93,14 +93,14 @@ public abstract class CarTyped {
     public int GetWheelCount() {
         return wheelsCount;
     }
-    public CarTyped(Type type, MarkType markType, String model, String color, int wheelsCount) {
+    public CarTyped(Type type, Engine engine, MarkType markType, String model, String color, int wheelsCount) {
         this.type = type;
         this.markType = markType;
         this.model = model;
         this.color = color;
         this.wheelsCount = wheelsCount;
     }
-    public CarTyped(Type type, MarkType markType, String model, String color, int wheelsCount, String registerMark) {
+    public CarTyped(Type type, Engine engine, MarkType markType, String model, String color, int wheelsCount, String registerMark) {
         this.type = type;
         this.markType = markType;
         this.model = model;

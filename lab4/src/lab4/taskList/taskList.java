@@ -1,12 +1,8 @@
 package lab4.taskList;
 
 import lab4.car.*;
-import lab4.carTyped.*;
+import lab4.carTyped.types.MotorCar;
 import lab4.complex.Complex;
-import utils.Input;
-import utils.Regex;
-
-import java.util.Scanner;
 
 public class taskList {
     public static void task1() {
@@ -38,8 +34,10 @@ public class taskList {
         car.printEngineInfo();
     }
     public static void task5() {
-        MotorCar motorCar = new MotorCar("Honda Civic 2012", "White");
+        Engine engine = new Engine(400, 10, Fuel.PETROL95, 15, 5, "G3405 - 4H1488");
+        MotorCar motorCar = new MotorCar("Honda Civic 2012", engine, "White");
         motorCar.SetRegisterMark();
+        System.out.println(motorCar.GetRegisterMark());
     }
     public static void task6() {
 
