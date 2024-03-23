@@ -4,20 +4,20 @@ import lab4.carTyped.*;
 import lab4.car.Engine;
 import lab4.carTyped.types.*;
 import utils.Input;
+import utils.Table;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class CarBase {
-    private Map<String, CarTyped> carContainer;
-    private final int maxSize;
-    private final String label;
+    protected Map<String, CarTyped> carContainer;
+    protected final int maxSize;
+    protected final String label;
     public CarBase(int maxSize, String label) {
         this.maxSize = maxSize;
         this.carContainer = new HashMap<>();
         this.label = label;
     }
-    public void NewCar(CarTyped.Type type, String model, Engine engine, String color, CarTyped.Location location) {
+    public void NewCar(CarTyped.Type type, String model, Engine engine, String color) {
         if (carContainer.size() == maxSize) {
             System.out.printf(LogMessage.FULLBASE.getMessage() + "Добавить ТС нельзя%n", label);
             return;
@@ -32,14 +32,17 @@ public class CarBase {
                 newCar = new SpecialCar(model, engine, color, wheelsCount, CarTyped.Location.BASE);
             }
         }
-        String newCarLabel = String.format("%s%d", type.GetType(), carContainer.size() + 1);
-        carContainer.put(newCarLabel, newCar);
+        carContainer.put(model, newCar);
         System.out.printf("%s: %d/%d%n", label, carContainer.size(), maxSize);
         if (carContainer.size() == maxSize) System.out.printf(LogMessage.FULLBASE.getMessage() , label);
     }
     public void RemoveCar(String carLabel) {
         if (carContainer.size() == 0) {
             System.out.printf(LogMessage.EMPTYBASE.getMessage() + "Невозможно удалить ТС%n", label);
+            return;
+        }
+        if (carContainer.get(carLabel) == null) {
+            System.out.printf(LogMessage.NOSUCHCAR.getMessage(), label, carLabel);
             return;
         }
         carContainer.remove(carLabel);
@@ -63,7 +66,7 @@ public class CarBase {
             return;
         }
         car.SetLocation(CarTyped.Location.ONROAD);
-        System.out.printf("%s отправлен в рейс с %s", carLabel, label);
+        System.out.printf("%s отправлен в рейс с %s%n", carLabel, label);
     }
     public void OnRepair(String carLabel) {
         CarTyped car;
@@ -83,14 +86,13 @@ public class CarBase {
             return;
         }
         car.SetLocation(CarTyped.Location.REPAIR);
-        System.out.printf("%s отправлен в ремонт В %s", carLabel, label);
+        System.out.printf("%s отправлен в ремонт в %s%n", carLabel, label);
     }
     public void OnBase(String carLabel) {
         CarTyped car;
         try {
             car = carContainer.get(carLabel);
-        }
-        catch (Exception NullPointerException) {
+        } catch (Exception NullPointerException) {
             System.out.printf(LogMessage.NOSUCHCAR.getMessage(), label, carLabel);
             return;
         }
@@ -103,31 +105,49 @@ public class CarBase {
             return;
         }
         car.SetLocation(CarTyped.Location.BASE);
-        System.out.printf("%s отправлен в %s", carLabel, label);
+        System.out.printf("%s отправлен на базу в %s%n", carLabel, label);
     }
-    // TODO: Вывод информации об автобазе
-    /*public class Print {
-        public void OnBase() {
-
+    protected void PrintList(String title, CarTyped.Location location) {
+        String lineBreak = "------------------";
+        if (carContainer.size() == 0) {
+            System.out.printf(LogMessage.EMPTYBASE.getMessage(), label);
+            return;
         }
-        public void OnRoad() {}
-        public void OnRepair() {}
-    }*/
+        System.out.println(title);
+        int count = 0;
+        for (Map.Entry<String, CarTyped> car : carContainer.entrySet()) {
+            if (car.getValue().GetLocation() == location) {
+                System.out.println(car.getKey());
+                count++;
+            }
+        }
+        if (count == 0) System.out.println(LogMessage.NOCARS.getMessage());
+        System.out.println(lineBreak);
+    }
+    public void PrintInOrder() {
+        PrintList("БАЗА: Исправные", CarTyped.Location.BASE);
+    }
+    public void PrintBroken() {
+        PrintList("БАЗА: Неисправные", CarTyped.Location.REPAIR);
+    }
+    public void PrintOnRoad() {
+        PrintList("В ПУТИ", CarTyped.Location.ONROAD);
+    }
 }
-
 enum LogMessage {
     EMPTYBASE("%s пуста%n"),
     FULLBASE("Место на автобазе %s закончилось%n"),
     STAT("%s: %d/%d%n"),
     NOSUCHCAR("В %s отсутствует ТС с именем %s"),
-    ADD("%s добавлен в %s"),
-    REMOVE("%s удален с %s"),
-    NOTONBASE("%s не на базе или неисправен%n");
+    ADD("%s добавлен в %s%n"),
+    REMOVE("%s удален с %s%n"),
+    NOTONBASE("%s не на базе или неисправен%n"),
+    NOCARS("ТС отсуствуют");
     private String message;
     LogMessage(String message) {
         this.message = message;
     }
     public String getMessage() {
-        return message;
+        return "!" + message;
     }
 }

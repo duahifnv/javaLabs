@@ -5,7 +5,7 @@ import lab4.carTyped.*;
 import lab4.carTyped.types.*;
 import lab4.complex.Complex;
 
-public class taskList {
+public abstract class taskList {
     public static void task1() {
         Engine engine = new Engine(100, 5, Fuel.DIESEL, 8, 3, "V2403 - 3L1245");
         Car car = new Car(Car.Type.MOTOR, "Cherry Tiago 4 PRO", "Gray", engine, 4);
@@ -44,7 +44,16 @@ public class taskList {
         // CarTyped car = new CarTyped();   ERROR: 'CarTyped' is abstract; cannot be instantiated
     }
     public static void task7() {
-        // TODO: Создать автобазу
+        CarBase carBase = new CarBase(3, "Ростсельмаш");
+        Engine engine = new Engine(400, 10, Fuel.PETROL95, 15, 5, "G3405 - 4H1488");
+        carBase.NewCar(CarTyped.Type.MOTOR, "Honda Civic 2012", engine, "White");
+        carBase.NewCar(CarTyped.Type.TRUCK, "Какой-то трактор с Ростсельмаша", engine, "Yellow");
+        carBase.NewCar(CarTyped.Type.BUS, "Шедевроавтобус", engine, "Green");
+        carBase.PrintInOrder(); carBase.PrintBroken();
+        carBase.OnRepair("Какой-то трактор с Ростсельмаша");
+        carBase.PrintInOrder(); carBase.PrintBroken();
+        carBase.RemoveCar("Шедевроавтобус");
+        carBase.RemoveCar("Левое ТС");       // ERROR
     }
     public static void task8() {
         // TODO: Создать систему классов для построения графиков
