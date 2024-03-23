@@ -31,7 +31,7 @@ public abstract class CarTyped {
             return regMask;
         }
     }
-    protected enum Type {
+    public enum Type {
         MOTOR("Легковой автомобиль"),
         TRUCK("Грузовой автомобиль"),
         BUS("Автобус"),
@@ -44,7 +44,7 @@ public abstract class CarTyped {
             return type;
         }
     }
-    protected enum Location {
+    public enum Location {
         BASE("На базе"),
         ONROAD("В рейсе"),
         REPAIR("На ремонте");
@@ -59,11 +59,18 @@ public abstract class CarTyped {
     protected Type type;
     protected String registerMark = "Не присвоен";
     protected MarkType markType;
+    protected Location location;
     private final String model;
     protected String color;
     protected final int wheelsCount;
     protected Engine engine;
 
+    public void SetLocation(Location location) {
+        this.location = location;
+    }
+    public Location GetLocation() {
+        return location;
+    }
     public void SetEngine(Engine engine) {
         this.engine = engine;
     }
@@ -93,15 +100,17 @@ public abstract class CarTyped {
     public int GetWheelCount() {
         return wheelsCount;
     }
-    public CarTyped(Type type, Engine engine, MarkType markType, String model, String color, int wheelsCount) {
+    public CarTyped(Type type, Location location, Engine engine, MarkType markType, String model, String color, int wheelsCount) {
         this.type = type;
+        this.location = location;
         this.markType = markType;
         this.model = model;
         this.color = color;
         this.wheelsCount = wheelsCount;
     }
-    public CarTyped(Type type, Engine engine, MarkType markType, String model, String color, int wheelsCount, String registerMark) {
+    public CarTyped(Type type, Location location, Engine engine, MarkType markType, String model, String color, int wheelsCount, String registerMark) {
         this.type = type;
+        this.location = location;
         this.markType = markType;
         this.model = model;
         this.color = color;

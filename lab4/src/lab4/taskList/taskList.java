@@ -1,7 +1,8 @@
 package lab4.taskList;
 
 import lab4.car.*;
-import lab4.carTyped.types.MotorCar;
+import lab4.carTyped.*;
+import lab4.carTyped.types.*;
 import lab4.complex.Complex;
 
 public class taskList {
@@ -35,12 +36,12 @@ public class taskList {
     }
     public static void task5() {
         Engine engine = new Engine(400, 10, Fuel.PETROL95, 15, 5, "G3405 - 4H1488");
-        MotorCar motorCar = new MotorCar("Honda Civic 2012", engine, "White");
+        MotorCar motorCar = new MotorCar("Honda Civic 2012", engine, "White", CarTyped.Location.BASE);
         motorCar.SetRegisterMark();
         System.out.println(motorCar.GetRegisterMark());
     }
     public static void task6() {
-
+        // CarTyped car = new CarTyped();   ERROR: 'CarTyped' is abstract; cannot be instantiated
     }
     public static void task7() {
         // TODO: Создать автобазу

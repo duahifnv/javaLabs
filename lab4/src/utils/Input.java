@@ -17,7 +17,8 @@ public class Input {
     public String getExitWord() {
         return exitWord;
     }
-    public int Size(String comm, int min, int max) {
+    public static int Size(String comm, int min, int max) {
+        Scanner scan = new Scanner(System.in);
         int input;
         while(true) {
             System.out.print(comm);
