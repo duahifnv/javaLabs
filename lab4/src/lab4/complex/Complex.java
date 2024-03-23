@@ -1,24 +1,24 @@
 package lab4.complex;
 
+import java.lang.Math;
 public class Complex {
-    private double x;
-    private double y;
-    private String algebraic;
-    private String trigonometric;
-
-    public Complex(double x, double y) {
-        this.x = x;
-        this.y = y;
-        this.algebraic = String.format("%.02f + %.02f * i", x, y);  // z = x + i*y;
-        double AbsR = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2));
-        double Phi = Math.atan(y / x);
+    protected final double real;
+    protected final double imag;
+    protected final String algebraic;
+    protected final String trigonometric;
+    public Complex(double real, double imag) {
+        this.real = real;
+        this.imag = imag;
+        this.algebraic = String.format("%.02f + %.02f * i", real, imag);  // z = real + i*imag;
+        double AbsR = Math.sqrt(Math.pow(real, 2) + Math.pow(imag, 2));
+        double Phi = Math.atan(imag / real);
         this.trigonometric = String.format("%.02f * (cos(%.02f) + i * sin(%.02f))", AbsR, Phi, Phi);
     }
-    public double getReal() {
-        return x;
+    public double real() {
+        return real;
     }
-    public double getMnemo() {
-        return y;
+    public double imag() {
+        return imag;
     }
     public String getAlgebraic() {
         return algebraic;
@@ -26,28 +26,56 @@ public class Complex {
     public String getTrigonometric() {
         return trigonometric;
     }
-    public Boolean isEqual(Complex z1, Complex z2) {
-        return (z1.getReal() == z2.getReal() && z1.getMnemo() == z2.getMnemo());
+    public Complex Pair(Complex z) {
+        return new Complex(z.real, -z.imag());
     }
-    public static String Sum(Complex z1, Complex z2) {
-        double x = z1.getReal() + z2.getReal();
-        double y = z1.getMnemo() + z2.getMnemo();
-        return String.format("%.02f + %.02f * i", x, y);
+    public Boolean IsEqual(Complex z1, Complex z2) {
+        return (z1.real() == z2.real() && z1.imag() == z2.imag());
     }
-    public static String Subtract(Complex z1, Complex z2) {
-        double x = z1.getReal() - z2.getReal();
-        double y = z1.getMnemo() - z2.getMnemo();
-        return String.format("%.02f + %.02f * i", x, y);
+
+    public static Complex sum(Complex z1, Complex z2) {
+        double real = z1.real() + z2.real();
+        double imag = z1.imag() + z2.imag();
+        return new Complex(real, imag);
     }
-    public static String Multiply(Complex z1, Complex z2) {
-        double x = z1.getReal() * z2.getReal() - z1.getMnemo() * z2.getMnemo();
-        double y = z1.getReal() * z2.getMnemo() + z2.getReal() * z1.getMnemo();
-        return String.format("%.02f + %.02f * i", x, y);
+    public static Complex sub(Complex z1, Complex z2) {
+        double real = z1.real() - z2.real();
+        double imag = z1.imag() - z2.imag();
+        return new Complex(real, imag);
     }
-    public static String Divide(Complex z1, Complex z2) {
-        double xdiv = z1.getReal() * z2.getReal() + z1.getMnemo() * z2.getMnemo();
-        double ydiv = z2.getReal() * z1.getMnemo() - z1.getReal() * z2.getMnemo();
-        double mod = Math.pow(z2.getReal(), 2) + Math.pow(z2.getMnemo(), 2);
-        return String.format("%.02f + %.02f * i", xdiv / mod, ydiv / mod);
+    public static Complex mul(Complex z1, Complex z2) {
+        double real = z1.real() * z2.real() - z1.imag() * z2.imag();
+        double imag = z1.real() * z2.imag() + z2.real() * z1.imag();
+        return new Complex(real, imag);
+    }
+    public static Complex div(Complex z1, Complex z2) {
+        double realdiv = z1.real() * z2.real() + z1.imag() * z2.imag();
+        double ydiv = z2.real() * z1.imag() - z1.real() * z2.imag();
+        double mod = Math.pow(z2.real(), 2) + Math.pow(z2.imag(), 2);
+        return new Complex(realdiv / mod, ydiv / mod);
+    }
+    public static void PrintAlgebraic(Complex z) {
+        System.out.printf("%.02f + %.02f * i", z.real, z.imag);
+    }
+    public static String PrintSum(Complex z1, Complex z2) {
+        double real = z1.real() + z2.real();
+        double imag = z1.imag() + z2.imag();
+        return String.format("%.02f + %.02f * i", real, imag);
+    }
+    public static String PrintSubtract(Complex z1, Complex z2) {
+        double real = z1.real() - z2.real();
+        double imag = z1.imag() - z2.imag();
+        return String.format("%.02f + %.02f * i", real, imag);
+    }
+    public static String PrintMultiply(Complex z1, Complex z2) {
+        double real = z1.real() * z2.real() - z1.imag() * z2.imag();
+        double imag = z1.real() * z2.imag() + z2.real() * z1.imag();
+        return String.format("%.02f + %.02f * i", real, imag);
+    }
+    public static String PrintDivide(Complex z1, Complex z2) {
+        double realdiv = z1.real() * z2.real() + z1.imag() * z2.imag();
+        double ydiv = z2.real() * z1.imag() - z1.real() * z2.imag();
+        double mod = Math.pow(z2.real(), 2) + Math.pow(z2.imag(), 2);
+        return String.format("%.02f + %.02f * i", realdiv / mod, ydiv / mod);
     }
 }

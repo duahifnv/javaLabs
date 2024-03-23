@@ -4,8 +4,9 @@ import lab4.car.*;
 import lab4.carTyped.*;
 import lab4.carTyped.types.*;
 import lab4.complex.Complex;
+import lab4.complex.ComplexMath;
 
-public abstract class taskList {
+public class taskList {
     public static void task1() {
         Engine engine = new Engine(100, 5, Fuel.DIESEL, 8, 3, "V2403 - 3L1245");
         Car car = new Car(Car.Type.MOTOR, "Cherry Tiago 4 PRO", "Gray", engine, 4);
@@ -22,10 +23,11 @@ public abstract class taskList {
         System.out.println("Z2");
         System.out.println("Алгебраическая форма: " + z2.getAlgebraic());
         System.out.println("Тригонометрическая форма: " + z2.getTrigonometric());
-        System.out.printf("z1 = %s%n/%nz2 = %s%n---%n%s", z1.getAlgebraic(), z2.getAlgebraic(), Complex.Divide(z1,z2));
+        System.out.printf("z1 = %s%n/%nz2 = %s%n---%n%s", z1.getAlgebraic(), z2.getAlgebraic(), Complex.div(z1,z2));
     }
     public static void task3() {
-        // ...
+        Complex z = new Complex(2, 3);
+        Complex.PrintAlgebraic(ComplexMath.exp(z));
     }
     public static void task4() {
         Engine engine = new Engine(100, 5, Fuel.DIESEL, 8, 3, "V2403 - 3L1245");
