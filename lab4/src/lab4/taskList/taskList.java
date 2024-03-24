@@ -3,8 +3,8 @@ package lab4.taskList;
 import lab4.car.*;
 import lab4.carTyped.*;
 import lab4.carTyped.types.*;
-import lab4.complex.Complex;
-import lab4.complex.ComplexMath;
+import lab4.complex.*;
+import lab4.plot.*;
 
 public class taskList {
     public static void task1() {
@@ -58,9 +58,26 @@ public class taskList {
         carBase.RemoveCar("Левое ТС");       // ERROR
     }
     public static void task8() {
-        // TODO: Создать систему классов для построения графиков
+        // TODO: Создать UML-диаграмм для taskList.task9()
     }
     public static void task9() {
-        // TODO: Создать систему классов UML-диаграмм
+        Figure fig = new Figure(new int[]{3, 3});
+        fig.drawFigure();
+        int accuracy = 20;  // Число точек
+        double xMin = 1f;
+        double xMax = 4f;
+        double step = (xMax - xMin) / accuracy;
+        double[] x = new double[accuracy];
+        double[] y = new double[accuracy];
+        int i = 0;
+        for (double xi = xMin; i < accuracy && xi < xMax; xi += step, i++) {
+            x[i] = xi;
+            y[i] = Math.pow(xi, 2);
+        }
+        Axes ax = fig.setAxes(x[0], x[accuracy - 1], y[0], y[accuracy - 1], "Ось X", "Ось Y");
+        ax.addPlot(x, y, "y=x^2");
+        // ax.removePlot("y=x^2");
+        ax.setGrid(0.1, 0.1);
+        ax.setLegend(Legend.Position.UPPERRIGHT, 1, 1);
     }
 }
