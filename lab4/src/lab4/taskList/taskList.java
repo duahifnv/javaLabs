@@ -14,8 +14,8 @@ public class taskList {
         car.setColor("White");
         car.printInfo();
     }
-    public static void task2() {
-        Complex z1 = new Complex(2, 3);
+    public static void task2(String real, String imag) {
+        Complex z1 = new Complex(Integer.parseInt(real), Integer.parseInt(imag));
         System.out.println("Z1");
         System.out.println("Алгебраическая форма: " + z1.getAlgebraic());
         System.out.println("Тригонометрическая форма: " + z1.getTrigonometric());
@@ -23,7 +23,7 @@ public class taskList {
         System.out.println("Z2");
         System.out.println("Алгебраическая форма: " + z2.getAlgebraic());
         System.out.println("Тригонометрическая форма: " + z2.getTrigonometric());
-        System.out.printf("z1 = %s%n/%nz2 = %s%n---%n%s", z1.getAlgebraic(), z2.getAlgebraic(), Complex.div(z1,z2));
+        System.out.printf("z1 = %s%n/%nz2 = %s%n---%n%s", z1.getAlgebraic(), z2.getAlgebraic(), Complex.div(z1,z2).getAlgebraic());
     }
     public static void task3() {
         Complex z = new Complex(2, 3);
@@ -60,8 +60,10 @@ public class taskList {
     public static void task8() {
         // TODO: Создать UML-диаграмм для taskList.task9()
     }
-    public static void task9() {
-        Figure fig = new Figure(new int[]{3, 3});
+    public static void task9(String fig1, String fig2) {
+        int figX = Integer.parseInt(fig1);
+        int figY =  Integer.parseInt(fig2);
+        Figure fig = new Figure(new int[]{figX, figY});
         fig.drawFigure();
         int accuracy = 20;  // Число точек
         double xMin = 1f;
@@ -76,7 +78,6 @@ public class taskList {
         }
         Axes ax = fig.setAxes(x[0], x[accuracy - 1], y[0], y[accuracy - 1], "Ось X", "Ось Y");
         ax.addPlot(x, y, "y=x^2");
-        // ax.removePlot("y=x^2");
         ax.setGrid(0.1, 0.1);
         ax.setLegend(Legend.Position.UPPERRIGHT, 1, 1);
     }
