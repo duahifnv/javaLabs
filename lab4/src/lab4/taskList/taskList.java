@@ -58,7 +58,7 @@ public class taskList {
         carBase.RemoveCar("Левое ТС");       // ERROR
     }
     public static void task8() {
-        // TODO: Создать UML-диаграмм для taskList.task9()
+        // lab4/plot.uml
     }
     public static void task9(String fig1, String fig2) {
         int figX = Integer.parseInt(fig1);

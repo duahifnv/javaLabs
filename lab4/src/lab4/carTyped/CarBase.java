@@ -1,10 +1,8 @@
 package lab4.carTyped;
 
-import lab4.carTyped.*;
 import lab4.car.Engine;
 import lab4.carTyped.types.*;
 import utils.Input;
-import utils.Table;
 
 import java.util.*;
 

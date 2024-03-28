@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>lab4.plot</OriginalElement>
+  <nodes>
+    <node x="830.6310689696104" y="502.2330187559354">lab4.plot.Point</node>
+    <node x="13.454267568851265" y="-87.71221509971488">lab4.plot.Legend.Position</node>
+    <node x="185.86672008547015" y="408.6993055555555">lab4.plot.Plot</node>
+    <node x="96.577561134853" y="172.06153846153848">lab4.plot.Legend</node>
+    <node x="967.0042438271607" y="215.06153846153848">lab4.plot.Grid</node>
+    <node x="435.0" y="94.06153846153848">lab4.plot.Axes</node>
+    <node x="353.5" y="-217.155591168091">lab4.plot.Figure</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Grid" relationship="CREATE">
+      <point x="-184.0" y="75.0" />
+      <point x="-15.0" y="45.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Legend" relationship="TO_ONE">
+      <point x="-184.0" y="30.0" />
+      <point x="117.5" y="30.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Plot" relationship="TO_MANY">
+      <point x="-184.0" y="45.0" />
+      <point x="361.0" y="275.0615384615385" />
+      <point x="63.13327991452985" y="-71.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Legend" relationship="CREATE">
+      <point x="-184.0" y="-45.0" />
+      <point x="117.5" y="-45.0" />
+    </edge>
+    <edge source="lab4.plot.Legend" target="lab4.plot.Legend.Position" relationship="TO_ONE">
+      <point x="-117.5" y="0.0" />
+      <point x="135.95426756885126" y="230.06153846153848" />
+      <point x="0.0" y="97.5" />
+    </edge>
+    <edge source="lab4.plot.Figure" target="lab4.plot.Axes" relationship="CREATE">
+      <point x="-15.0" y="71.5" />
+      <point x="604.0" y="245.06153846153848" />
+      <point x="-184.0" y="15.0" />
+    </edge>
+    <edge source="lab4.plot.Figure" target="lab4.plot.Axes" relationship="TO_ONE">
+      <point x="15.0" y="71.5" />
+      <point x="634.0" y="200.06153846153848" />
+      <point x="-184.0" y="-30.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Point" relationship="TO_MANY">
+      <point x="0.0" y="136.00046153846154" />
+      <point x="619.0" y="415.0" />
+      <point x="906.631" y="415.0" />
+      <point x="-6.896961042457406E-5" y="-32.0000187559354" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Grid" relationship="TO_ONE">
+      <point x="-184.0" y="-15.0" />
+      <point x="1123.0042438271607" y="215.06153846153848" />
+      <point x="-0.0" y="45.0" />
+    </edge>
+    <edge source="lab4.plot.Plot" target="lab4.plot.Point" relationship="TO_MANY">
+      <point x="112.0" y="54.53371320037991" />
+      <point x="-76.0" y="0.0" />
+    </edge>
+    <edge source="lab4.plot.Legend.Position" target="lab4.plot.Legend" relationship="INNER_CLASS">
+      <point x="122.5" y="0.0" />
+      <point x="214.077561134853" y="9.787784900285118" />
+      <point x="0.0" y="-58.0" />
+    </edge>
+    <edge source="lab4.plot.Plot" target="lab4.plot.Point" relationship="CREATE">
+      <point x="112.0" y="39.53371320037991" />
+      <point x="-76.0" y="-15.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Plot" relationship="CREATE">
+      <point x="-15.0" y="136.0" />
+      <point x="604.0" y="479.6993055555555" />
+      <point x="112.0" y="0.0" />
+    </edge>
+    <edge source="lab4.plot.Axes" target="lab4.plot.Figure" relationship="GENERALIZATION">
+      <point x="-184.0" y="0.0" />
+      <point x="619.0" y="230.06153846153848" />
+      <point x="-0.0" y="71.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.8099378881987578" showDependencies="true" x="646.5" y="174.50000000000009" />
+  <SelectedNodes>
+    <node>lab4.plot.Plot</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>protected</VISIBILITY>
+</Diagram>
+
