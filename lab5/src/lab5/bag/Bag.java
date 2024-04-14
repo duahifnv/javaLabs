@@ -1,4 +1,4 @@
-package lab5;
+package lab5.bag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -37,7 +37,7 @@ public class Bag {
         return indexes.toArray(new Integer[0]);
     }
     // Положить обьект в мешок
-    protected void putItem(Object obj) {
+    public void putItem(Object obj) {
         if (weight == capacity) {
             throw new Error("Мешок заполнен. Добавление новых элементов невозможно");
         }
@@ -47,7 +47,7 @@ public class Bag {
         weight++;
     }
     // Взять обьект из мешка
-    protected Object pickItem() {
+    public Object pickItem() {
         if (weight == 0) {
             throw new Error("Мешок пуст. Невозможно получить элементы");
         }
@@ -59,17 +59,17 @@ public class Bag {
         return pickedObj;
     }
     // Просмотреть обьект из мешка
-    protected Object getItem() {
+    public Object getItem() {
         Integer[] placedIndexes = getPlaced();
         int placedIndex = placedIndexes[(int) Math.round(Math.random() * (placedIndexes.length - 1))];
         return items[placedIndex];
     }
     // Получить вес мешка
-    protected final int getWeight() {
+    public final int getWeight() {
         return weight;
     }
     // Получить размер мешка
-    protected final int getCapacity() {
+    public final int getCapacity() {
         return capacity;
     }
     @Override
