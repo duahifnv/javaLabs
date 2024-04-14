@@ -30,7 +30,24 @@ public class TaskList {
             bag.put(i);
         }
         System.out.println(bag);
-        System.out.println(bag.pick());
+        System.out.println("Извлекли: " + bag.pick());
         System.out.println(bag);
+    }
+    public static void task3(String val) {
+        int capacity;
+        try {
+            capacity = Integer.parseInt(val);
+        }
+        catch (NumberFormatException e) {
+            throw new Error("Задача #3 принимает целочисленный аргумент");
+        }
+
+        PairBag pairbag = new PairBag(capacity);
+        for (int i = 0; i < pairbag.getCapacity() / 2; i++) {
+            pairbag.put(new Pair<>(i, i + 1));
+        }
+        System.out.println(pairbag);
+        System.out.println("Извлекли: " + pairbag.pick());
+        System.out.println(pairbag);
     }
 }
