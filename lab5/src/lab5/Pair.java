@@ -37,7 +37,7 @@ public class Pair<K, V> {
     public String toString() {
         return String.format("%s: {%s, %s}",
                 label,
-                first.getClass().getSimpleName(),
-                second.getClass().getSimpleName());
+                first.toString(),
+                second.toString());
     }
 }
