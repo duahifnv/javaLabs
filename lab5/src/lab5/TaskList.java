@@ -43,9 +43,9 @@ public class TaskList {
         }
         PairBag pairbag = new PairBag(capacity);
         for (int i = 0; i < pairbag.getCapacity() / 2; i++) {
-            pairbag.putPair(new Pair<>(i, i + 1));
+            pairbag.put(new Pair<>(i, i + 1));
         }
-        System.out.println(pairbag + "\nИзвлекли: " + pairbag.pickPair() + "\n" + pairbag);
+        System.out.println(pairbag + "\nИзвлекли: " + pairbag.pick() + "\n" + pairbag);
     }
     public static void task4(String val) {
         int capacity;
@@ -53,13 +53,27 @@ public class TaskList {
             capacity = Integer.parseInt(val);
         }
         catch (NumberFormatException e) {
-            throw new Error("Задача #3 принимает целочисленный аргумент");
+            throw new Error("Задача #4 принимает целочисленный аргумент");
         }
         GPairBag<Integer, Integer> gPairBag = new GPairBag<>(capacity);
         for (int i = 0; i < gPairBag.getCapacity() / 2; i++) {
-            gPairBag.putGPair(new Pair<>(i, i + 1));
+            gPairBag.put(new Pair<>(i, i + 1));
         }
         // gPairBag.putGPair(new Pair<>(0.2, 0.3));     Error
-        System.out.println(gPairBag + "\nИзвлекли: " + gPairBag.pickGPair() + "\n" + gPairBag);
+        System.out.println(gPairBag + "\nИзвлекли: " + gPairBag.pick() + "\n" + gPairBag);
+    }
+    public static void task5(String val) {
+        int capacity;
+        try {
+            capacity = Integer.parseInt(val);
+        }
+        catch (NumberFormatException e) {
+            throw new Error("Задача #5 принимает целочисленный аргумент");
+        }
+        GenericPairBag<Integer, Integer> genericPairBag = new GenericPairBag<>(capacity);
+        for (int i = 0; i < genericPairBag.getCapacity() / 2; i++) {
+            genericPairBag.put(new Pair<>(i, i + 1));
+        }
+        System.out.println(genericPairBag + "\nИзвлекли: " + genericPairBag.pick() + "\n" + genericPairBag);
     }
 }

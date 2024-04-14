@@ -11,13 +11,13 @@ public class PairBag extends Bag {
     public PairBag(int capacity) {
         super(capacity);
     }
-    public void putPair(Pair<Object, Object> pair) {
+    public void put(Pair<Object, Object> pair) {
         super.putItem(pair);
     }
-    public Pair<Object, Object> pickPair() {
+    public Pair<Object, Object> pick() {
         return (Pair<Object, Object>) super.pickItem();
     }
-    public Pair<Object, Object> getPair() {
+    public Pair<Object, Object> get() {
         return (Pair<Object, Object>) super.getItem();
     }
 }

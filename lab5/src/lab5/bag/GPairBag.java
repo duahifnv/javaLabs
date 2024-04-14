@@ -11,13 +11,13 @@ public class GPairBag<T1, T2> extends Bag{
     public GPairBag(int capacity) {
         super(capacity);
     }
-    public void putGPair(Pair<T1, T2> pair) {
+    public void put(Pair<T1, T2> pair) {
         super.putItem(pair);
     }
-    public Pair<T1, T2> pickGPair() {
+    public Pair<T1, T2> pick() {
         return (Pair<T1, T2>) super.pickItem();
     }
-    public Pair<T1, T2> getGPair() {
+    public Pair<T1, T2> get() {
         return (Pair<T1, T2>) super.getItem();
     }
 }
