@@ -1,6 +1,7 @@
 package lab5;
 
 import lab5.bag.*;
+import lab5.cup.Cup;
 
 public class TaskList {
     public static void task1(String val1, String val2) {
@@ -75,5 +76,17 @@ public class TaskList {
             genericPairBag.put(new Pair<>(i, i + 1));
         }
         System.out.println(genericPairBag + "\nИзвлекли: " + genericPairBag.pick() + "\n" + genericPairBag);
+    }
+    public static void task6(String val) {
+        final int DEFAULT_SIZE = 10;
+        int cupMembersCount;
+        try {
+            cupMembersCount = Integer.parseInt(val);
+        }
+        catch (NumberFormatException e) {
+            throw new Error("Задача #6 принимает целочисленный аргумент");
+        }
+        Cup cup = new Cup(cupMembersCount);
+        cup.run();
     }
 }
