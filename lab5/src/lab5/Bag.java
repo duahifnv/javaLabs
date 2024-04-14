@@ -8,7 +8,7 @@ import java.util.Arrays;
  * <h3>Необобщенный класс</h3>
  */
 public class Bag {
-    private final Object[] items;
+    protected final Object[] items;
     private final int capacity;
     private int weight;
     public Bag(int capacity) {
@@ -37,7 +37,7 @@ public class Bag {
         return indexes.toArray(new Integer[0]);
     }
     // Положить обьект в мешок
-    public void put(Object obj) {
+    protected void put(Object obj) {
         if (weight == capacity) {
             throw new Error("Мешок заполнен. Добавление новых элементов невозможно");
         }
@@ -47,7 +47,7 @@ public class Bag {
         weight++;
     }
     // Взять обьект из мешка
-    public Object pick() {
+    protected Object pick() {
         if (weight == 0) {
             throw new Error("Мешок пуст. Невозможно получить элементы");
         }
@@ -59,17 +59,17 @@ public class Bag {
         return pickedObj;
     }
     // Просмотреть обьект из мешка
-    public Object get() {
+    protected Object get() {
         Integer[] placedIndexes = getPlaced();
         int placedIndex = placedIndexes[(int) Math.round(Math.random() * (placedIndexes.length - 1))];
         return items[placedIndex];
     }
     // Получить вес мешка
-    public final int getWeight() {
+    protected final int getWeight() {
         return weight;
     }
     // Получить размер мешка
-    public final int getCapacity() {
+    protected final int getCapacity() {
         return capacity;
     }
     @Override
