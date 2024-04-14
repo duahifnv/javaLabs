@@ -2,6 +2,10 @@ package lab5;
 
 import lab5.bag.*;
 import lab5.cup.Cup;
+import lab5.dlist.DList;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class TaskList {
     public static void task1(String val1, String val2) {
@@ -88,5 +92,14 @@ public class TaskList {
         }
         Cup cup = new Cup(cupMembersCount);
         cup.run();
+    }
+    public static void task7() {
+        DList<String, Integer> grades = new DList<>("Табель оценок");
+        grades.add("Гослинг", new ArrayList<>(Arrays.asList(5, 4, 5, 3)));
+        grades.add("Дерден", new ArrayList<>(Arrays.asList(2, 3, 2, 2)));
+        grades.add("Сигмов", new ArrayList<>(Arrays.asList(4, 4, 3, 4)));
+        System.out.println(grades);
+        System.out.println(grades.pop(1));
+        System.out.println(grades);
     }
 }
