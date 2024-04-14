@@ -46,4 +46,7 @@ public class GenericPairBag<T1, T2> {
     public String toString() {
         return String.format("Мешок: {Размер:%d}, {Вес:%d}, {Содержимое:%s}", capacity, pairs.size(), Arrays.toString(pairs.toArray()));
     }
+    public boolean isEmpty() {
+        return pairs.size() == 0;
+    }
 }
