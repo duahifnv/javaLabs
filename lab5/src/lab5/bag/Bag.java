@@ -2,6 +2,7 @@ package lab5.bag;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * <h2>Мешок с обьектами</h2>
@@ -60,6 +61,9 @@ public class Bag {
     }
     // Просмотреть обьект из мешка
     public Object getItem() {
+        if (weight == 0) {
+            throw new Error("Мешок пуст. Невозможно просмотреть элементы");
+        }
         Integer[] placedIndexes = getPlaced();
         int placedIndex = placedIndexes[(int) Math.round(Math.random() * (placedIndexes.length - 1))];
         return items[placedIndex];
@@ -74,6 +78,7 @@ public class Bag {
     }
     @Override
     public String toString() {
-        return String.format("Мешок: {Размер:%d}, {Вес:%d}, {Содержимое:%s}", capacity, weight, Arrays.toString(items));
+        Object[] nonNull = Arrays.stream(items).filter(Objects::nonNull).toArray();
+        return String.format("Мешок: {Размер:%d}, {Вес:%d}, {Содержимое:%s}", capacity, weight, Arrays.toString(nonNull));
     }
 }
