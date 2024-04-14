@@ -17,4 +17,20 @@ public class TaskList {
         pair2.setLabel("Моя пара 2");
         System.out.println(pair2);
     }
+    public static void task2(String val) {
+        int capacity;
+        try {
+            capacity = Integer.parseInt(val);
+        }
+        catch (NumberFormatException e) {
+            throw new Error("Задача #2 принимает целочисленный аргумент");
+        }
+        Bag bag = new Bag(capacity);
+        for (int i = 0; i < bag.getCapacity() / 2; i++) {
+            bag.put(i);
+        }
+        System.out.println(bag);
+        System.out.println(bag.pick());
+        System.out.println(bag);
+    }
 }
