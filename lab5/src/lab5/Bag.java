@@ -37,7 +37,7 @@ public class Bag {
         return indexes.toArray(new Integer[0]);
     }
     // Положить обьект в мешок
-    protected void put(Object obj) {
+    protected void putItem(Object obj) {
         if (weight == capacity) {
             throw new Error("Мешок заполнен. Добавление новых элементов невозможно");
         }
@@ -47,7 +47,7 @@ public class Bag {
         weight++;
     }
     // Взять обьект из мешка
-    protected Object pick() {
+    protected Object pickItem() {
         if (weight == 0) {
             throw new Error("Мешок пуст. Невозможно получить элементы");
         }
@@ -59,7 +59,7 @@ public class Bag {
         return pickedObj;
     }
     // Просмотреть обьект из мешка
-    protected Object get() {
+    protected Object getItem() {
         Integer[] placedIndexes = getPlaced();
         int placedIndex = placedIndexes[(int) Math.round(Math.random() * (placedIndexes.length - 1))];
         return items[placedIndex];
