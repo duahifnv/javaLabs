@@ -30,15 +30,18 @@ public class DList<K, V> {
         throwBadGet(index);
         return new Pair<>(keys.get(index), values.get(index));
     }
+    public ArrayList<K> keys() {
+        return keys;
+    }
     public Pair<K, ArrayList<V>> pop(K key) {
         throwBadGet(key);
         int removed = keys.indexOf(key);
         return new Pair<>(keys.remove(removed), values.remove(removed));
     }
-    public Pair<K, ArrayList<V>> get(K key) {
+    public ArrayList<V> get(K key) {
         throwBadGet(key);
         int indexed = keys.indexOf(key);
-        return new Pair<>(keys.get(indexed), values.get(indexed));
+        return values.get(indexed);
     }
     private void throwBadGet(int index) {
         if (keys.isEmpty()) {
@@ -55,6 +58,9 @@ public class DList<K, V> {
         if (!keys.contains(key)) {
             throw new Error("Элемент " + key.toString() + " не найден в списке");
         }
+    }
+    public String getLabel() {
+        return label;
     }
     @Override
     public String toString() {
