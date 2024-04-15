@@ -4,6 +4,11 @@ import lab5.bag.*;
 import lab5.coin.CoinMachine;
 import lab5.cup.Cup;
 import lab5.dlist.DList;
+import lab5.hash.hashfunction.HashFunction;
+import lab5.hash.hashtable.HashTable;
+import lab5.hash.hashfunction.PersonHashFunction;
+import lab5.hash.hashtable.PersonHashTable;
+import lab5.hash.person.Person;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -109,5 +114,14 @@ public class TaskList {
         machine.addData(new int[]{1, 4, 7, 9}, 5);
         machine.addData(new int[]{1, 2, 5, 10}, 23);
         System.out.println(machine);
+    }
+    public static void task9() {
+        HashFunction<String> hashFunction = new PersonHashFunction(12);
+        HashTable<Person, String> hashTable = new PersonHashTable(12, hashFunction);
+        hashTable.add(new Person("Дерден", "Тайлер", 14));
+        hashTable.add(new Person("Бейтман", "Патрик", 88));
+        hashTable.add(new Person("Сигмов", "Никита", 0));
+        System.out.println(hashTable.get("ДерденТайлер14"));
+        System.out.println(hashTable.pop("СигмовНикита0"));
     }
 }
