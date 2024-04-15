@@ -1,6 +1,7 @@
 package lab5;
 
 import lab5.bag.*;
+import lab5.coin.CoinMachine;
 import lab5.cup.Cup;
 import lab5.dlist.DList;
 
@@ -101,5 +102,12 @@ public class TaskList {
         System.out.println(grades);
         System.out.println(grades.pop(1));
         System.out.println(grades);
+    }
+    public static void task8() {
+        CoinMachine machine = new CoinMachine("Монетоприемник");
+        machine.addData(new int[]{1, 2, 5, 10}, 3);
+        machine.addData(new int[]{1, 4, 7, 9}, 5);
+        machine.addData(new int[]{1, 2, 5, 10}, 23);
+        System.out.println(machine);
     }
 }
