@@ -27,8 +27,6 @@ public class TaskList {
         pair.setLabel("Моя пара");
         System.out.println(pair);
         Pair<Object, Object> pair2 = Pair.make_pair(new Object(), new Object());
-        pair2.setLabel("Моя пара 2");
-        System.out.println(pair2);
     }
     public static void task2(String val) {
         int capacity;
