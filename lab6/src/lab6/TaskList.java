@@ -1,7 +1,9 @@
 package lab6;
 
 import lab6.task1.SinusApp;
-import lab6.task2.Curve;
+import lab6.task2.SimpleCurve;
+import lab6.task3.Curve;
+import lab6.task3.Graph;
 import lab6.task4.MouseClickApp;
 import lab6.task5.DisplayApp;
 import lab6.task6.FilterApp;
@@ -27,9 +29,25 @@ public class TaskList {
             xData[i] = i * 2 * Math.PI / 100;
             yData[i] = Math.sin(xData[i]);
         }
-        Curve curve = new Curve();
+        SimpleCurve curve = new SimpleCurve();
         curve.setData(xData, yData);
         frame.add(curve);
+        frame.setVisible(true);
+    }
+    public static void task3() {
+        JFrame frame = newFrame("График функции", 800, 600);;
+        Graph graph = new Graph();
+        double[] xData = new double[100];
+        double[] yData = new double[100];
+        for (int i = 0; i < 100; i++) {
+            xData[i] = i * 2 * Math.PI / 100;
+            yData[i] = Math.sin(xData[i]);
+        }
+        Curve curve = new Curve();
+        curve.setData(xData, yData);
+        curve.setLabel("sin(x)");
+        graph.addCurve(curve);
+        frame.add(graph);
         frame.setVisible(true);
     }
     public static void task4() {

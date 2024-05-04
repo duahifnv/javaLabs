@@ -10,8 +10,7 @@ import java.awt.event.MouseEvent;
 public class MouseClickApp extends JPanel {
     private JLabel coordinatesLabel;
     public MouseClickApp() {
-        // TODO: Убрать центрирование
-        coordinatesLabel = new JLabel("Нажмите, чтобы увидеть координаты", SwingConstants.CENTER);
+        coordinatesLabel = new JLabel("Нажмите, чтобы увидеть координаты");
         coordinatesLabel.setFont(new Font("Sans Serif", Font.BOLD, 25));
         add(coordinatesLabel);
 

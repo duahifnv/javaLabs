@@ -1,11 +1,14 @@
-package lab6.task2;
+package lab6.task3;
+import lab6.task3.Graph;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Curve extends JPanel {
+public class Curve {
     private double[] xData;
     private double[] yData;
     private double minX, maxX, minY, maxY;
+    private String label;
     public void setData(double[] xData, double[] yData) {
         if (xData.length != yData.length) {
             throw new IllegalArgumentException();
@@ -28,7 +31,9 @@ public class Curve extends JPanel {
             maxY = Math.max(maxY, y);
         }
     }
-
+    public void setLabel(String label) {
+        this.label = label;
+    }
     public void setCoordinates(double minX, double maxX, double minY, double maxY) {
         this.minX = minX;
         this.maxX = maxX;
@@ -36,19 +41,10 @@ public class Curve extends JPanel {
         this.maxY = maxY;
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
+    public void draw(Graphics2D g2d, int width, int height) {
         if (xData == null || yData == null) {
             return;
         }
-
-        Graphics2D g2d = (Graphics2D) g.create();
-        int width = getWidth();
-        int height = getHeight();
-
-        g2d.setColor(Color.WHITE);
-        g2d.fillRect(0, 0, width, height);
 
         double scaleX = width / (maxX - minX);
         double scaleY = height / (maxY - minY);
@@ -56,7 +52,7 @@ public class Curve extends JPanel {
         double offsetY = -minY * scaleY;
 
         g2d.setColor(Color.BLACK);
-        g2d.setStroke(new BasicStroke(3));
+        g2d.setStroke(new BasicStroke(2));
         for (int i = 0; i < xData.length - 1; i++) {
             int x1 = (int) (xData[i] * scaleX + offsetX);
             int y1 = (int) (height - (yData[i] * scaleY + offsetY));
@@ -64,6 +60,7 @@ public class Curve extends JPanel {
             int y2 = (int) (height - (yData[i + 1] * scaleY + offsetY));
             g2d.drawLine(x1, y1, x2, y2);
         }
+        g2d.drawString(label, 20, 20);
         g2d.dispose();
     }
 }

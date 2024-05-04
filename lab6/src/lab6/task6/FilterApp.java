@@ -18,7 +18,7 @@ public class FilterApp extends JPanel {
 
     public FilterApp() {
         try {
-            originalImage = ImageIO.read(new File("D:\\DSTU\\ява\\lab6\\img\\neozid.jpg"));
+            originalImage = ImageIO.read(new File("D:\\DSTU\\ява\\lab6\\img\\bl.jpg"));
             displayedImage = originalImage;
 
             addMouseListener(new MouseAdapter() {
@@ -30,7 +30,6 @@ public class FilterApp extends JPanel {
                     }
                 }
             });
-
             addKeyListener(new KeyAdapter() {
                 @Override
                 public void keyTyped(KeyEvent e) {

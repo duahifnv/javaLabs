@@ -49,7 +49,7 @@ public class TickerApp extends JPanel {
         while (true) {
             startX++;
             try {
-                Thread.sleep(5);
+                Thread.sleep(2);
             }
             catch(Exception ignored) {}
             if (startX >= getWidth()) {

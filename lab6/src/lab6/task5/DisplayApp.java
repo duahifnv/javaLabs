@@ -13,7 +13,7 @@ public class DisplayApp extends JPanel {
     private boolean flipped = false;
     public DisplayApp() {
         try {
-            image = ImageIO.read(new File("D:\\DSTU\\ява\\lab6\\img\\neozid.jpg")); // Путь к изображению
+            image = ImageIO.read(new File("D:\\DSTU\\ява\\lab6\\img\\bl.jpg")); // Путь к изображению
         }
         catch (IOException e) {
             e.printStackTrace();
