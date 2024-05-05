@@ -4,12 +4,8 @@ import lab7.SceneUtils;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.ImageIcon;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -29,6 +25,7 @@ public class Task2 extends JFrame {
 
         JPanel imageContainer = new JPanel();
         imageContainer.setPreferredSize(new Dimension(1000, 600));
+        imageContainer.setBackground(Color.WHITE);
         FilterImage filterImage = new FilterImage(readImage(imgPath));
         filterImage.setPreferredSize(imageContainer.getPreferredSize());
         imageContainer.add(filterImage);
@@ -36,7 +33,7 @@ public class Task2 extends JFrame {
 
         JPanel btnContainer = new JPanel();
         btnContainer.setLayout(new BoxLayout(btnContainer, BoxLayout.Y_AXIS));
-
+        
         Button rotateBtn = new Button("Повернуть на 180 градусов");
         rotateBtn.addActionListener(e -> filterImage.setFilter(Filter.ROTATE));
 
@@ -46,12 +43,19 @@ public class Task2 extends JFrame {
         Button blurBtn = new Button("Заблюрить");
         blurBtn.addActionListener(e -> filterImage.setFilter(Filter.BLUR));
 
+        Button resetBtn = new Button("Сбросить");
+        resetBtn.addActionListener(e -> filterImage.resetFilter());
+
+
         btnContainer.add(rotateBtn);
         btnContainer.add(grayScaleBtn);
         btnContainer.add(blurBtn);
+        btnContainer.add(resetBtn);
+        btnContainer.setBorder(new RoundedBorder(10));
         container.add(btnContainer, BorderLayout.EAST);
         //SceneUtils.configFrame(jPanel);
         add(container);
+
         setSize(1280, 720);
         setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
