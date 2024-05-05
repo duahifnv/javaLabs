@@ -6,7 +6,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
 
-public class FilterImage extends JPanel {
+public class FilterImage extends JLabel {
     private final BufferedImage originalImage;
     private BufferedImage displayedImage;
     private boolean flipped = false;
@@ -24,6 +24,10 @@ public class FilterImage extends JPanel {
                 case ROTATE -> rotateImage();
             }
         }
+        repaint();
+    }
+    public void resetFilter() {
+        displayedImage = originalImage;
         repaint();
     }
     @Override
