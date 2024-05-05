@@ -5,8 +5,10 @@ import java.awt.*;
 
 public class Button extends JButton {
     public Button(String label) {
-        setLabel(label);
-        setMinimumSize(new Dimension(2500, 50));
+        setText(label);
+        setPreferredSize(new Dimension(200, 100));
+        setBorder(new RoundedBorder(10));
+        setBackground(Color.WHITE);
     }
 }
 
