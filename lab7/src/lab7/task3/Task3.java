@@ -5,9 +5,10 @@ import lab7.elements.Container;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class Task3 extends JFrame {
+    private boolean isAnimated = false;
+    private final double IMG_RATIO = 0.5;
     public Task3() {
         JPanel container = new Container();
         BallAnimation animation = new BallAnimation();
@@ -21,7 +22,18 @@ public class Task3 extends JFrame {
         btnContainer.setLayout(new FlowLayout());
 
         Button startStopBtn = new Button();
-        startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png", 0.5);
+        startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png", IMG_RATIO);
+        startStopBtn.addActionListener(e -> {
+            if (isAnimated) {
+                startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png", IMG_RATIO);
+                animation.stopAnimation();
+            }
+            else {
+                startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\stop.png", IMG_RATIO);
+                animation.startAnimation();
+            }
+            isAnimated = !isAnimated;
+        });
         btnContainer.add(startStopBtn);
 
         container.add(btnContainer, BorderLayout.EAST);

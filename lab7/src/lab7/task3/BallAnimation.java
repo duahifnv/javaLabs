@@ -9,12 +9,12 @@ import java.util.Random;
 
 public class BallAnimation extends JPanel {
     private ArrayList<Ball> balls = new ArrayList<>();
-
+    private boolean active = false;
     public BallAnimation() {
-        //setPreferredSize(new Dimension(300, 300));
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                if (!active) return;
                 super.mouseClicked(e);
                 int x = e.getX();
                 int y = e.getY();
@@ -25,7 +25,6 @@ public class BallAnimation extends JPanel {
             }
         });
         setVisible(true);
-        startAnimation();
     }
 
     private Color getRandomColor() {
@@ -43,8 +42,9 @@ public class BallAnimation extends JPanel {
         return random.nextInt(20) + 20;
     }
     public void startAnimation() {
+        active = true;
         new Thread(() -> {
-            while (true) {
+            while (active) {
                 for (Ball ball : balls) {
                     ball.move();
                     repaint();
@@ -57,6 +57,9 @@ public class BallAnimation extends JPanel {
                 }
             }
         }).start();
+    }
+    public void stopAnimation() {
+        active = false;
     }
     @Override
     public void paint(Graphics g) {
