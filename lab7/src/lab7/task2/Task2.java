@@ -28,8 +28,8 @@ public class Task2 extends JFrame {
         imageContainer.add(filterImage);
         container.add(imageContainer, BorderLayout.WEST);
 
-        JPanel btnContainer = new JPanel();
-        btnContainer.setLayout(new GridLayout(4, 1));
+        JPanel navContainer = new JPanel();
+        navContainer.setLayout(new GridLayout(4, 1));
 
         Button rotateBtn = new Button();
         rotateBtn.setText("Повернуть на 180");
@@ -47,11 +47,11 @@ public class Task2 extends JFrame {
         resetBtn.setText("Сбросить");
         resetBtn.addActionListener(e -> filterImage.resetFilter());
 
-        btnContainer.add(rotateBtn);
-        btnContainer.add(grayScaleBtn);
-        btnContainer.add(blurBtn);
-        btnContainer.add(resetBtn);
-        container.add(btnContainer, BorderLayout.EAST);
+        navContainer.add(rotateBtn);
+        navContainer.add(grayScaleBtn);
+        navContainer.add(blurBtn);
+        navContainer.add(resetBtn);
+        container.add(navContainer, BorderLayout.EAST);
         add(container);
 
         setSize(1280, 720);

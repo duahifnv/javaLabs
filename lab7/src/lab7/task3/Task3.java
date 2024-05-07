@@ -18,8 +18,8 @@ public class Task3 extends JFrame {
         mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
         container.add(mylabel, BorderLayout.NORTH);
 
-        JPanel btnContainer = new JPanel();
-        btnContainer.setLayout(new FlowLayout());
+        JPanel navContainer = new JPanel();
+        navContainer.setLayout(new FlowLayout());
 
         Button startStopBtn = new Button();
         startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png", IMG_RATIO);
@@ -34,9 +34,8 @@ public class Task3 extends JFrame {
             }
             isAnimated = !isAnimated;
         });
-        btnContainer.add(startStopBtn);
-
-        container.add(btnContainer, BorderLayout.EAST);
+        navContainer.add(startStopBtn);
+        container.add(navContainer, BorderLayout.EAST);
         add(container);
         setSize(1280, 720);
         //setResizable(false);
