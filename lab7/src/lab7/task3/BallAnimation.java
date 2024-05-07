@@ -8,13 +8,14 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class BallAnimation extends JPanel {
-    private ArrayList<Ball> balls = new ArrayList<>();
+    private final ArrayList<Ball> balls = new ArrayList<>();
+    private int maxBalls = 5;
     private boolean active = false;
     public BallAnimation() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                if (!active) return;
+                if (!active || balls.size() == maxBalls) return;
                 super.mouseClicked(e);
                 int x = e.getX();
                 int y = e.getY();
@@ -25,6 +26,21 @@ public class BallAnimation extends JPanel {
             }
         });
         setVisible(true);
+    }
+    public int getMaxBalls() {
+        return maxBalls;
+    }
+    public void setMaxBalls(int maxBalls) {
+        int size = balls.size();
+        if (size > maxBalls) {
+            for (int i = 0; i < size - maxBalls; i++) {
+                balls.removeLast();
+            }
+        }
+        this.maxBalls = maxBalls;
+    }
+    public int getCurrentSize() {
+        return balls.size();
     }
 
     private Color getRandomColor() {
