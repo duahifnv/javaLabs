@@ -1,6 +1,7 @@
 package lab7.task2;
 
 import lab7.elements.Button;
+import lab7.elements.Container;
 import lab7.elements.RoundedBorder;
 
 import javax.imageio.ImageIO;
@@ -12,12 +13,9 @@ import java.io.File;
 import java.io.IOException;
 
 public class Task2 extends JFrame {
-    String imgPath = "D:\\DSTU\\ява\\lab7\\img\\neozid.jpg";
+    String imgPath = "D:\\DSTU\\ява\\lab7\\img\\5.jpg";
     public Task2() {
-        JPanel container = new JPanel();
-        container.setLayout(new BorderLayout(20, 15));
-        container.setBorder(new EmptyBorder(10, 10, 10, 10));
-        container.setBackground(Color.WHITE);
+        JPanel container = new Container();
 
         JLabel mylabel = new JLabel("<html>" + "Image101" + "</html>");
         mylabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -47,7 +45,6 @@ public class Task2 extends JFrame {
 
         Button resetBtn = new Button("Сбросить");
         resetBtn.addActionListener(e -> filterImage.resetFilter());
-
 
         btnContainer.add(rotateBtn);
         btnContainer.add(grayScaleBtn);
