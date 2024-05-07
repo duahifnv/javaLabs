@@ -1,6 +1,7 @@
 package lab7.task2;
 
-import lab7.SceneUtils;
+import lab7.elements.Button;
+import lab7.elements.RoundedBorder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -20,7 +21,7 @@ public class Task2 extends JFrame {
 
         JLabel mylabel = new JLabel("<html>" + "Image101" + "</html>");
         mylabel.setHorizontalAlignment(SwingConstants.CENTER);
-        mylabel.setFont(new Font(Font.SANS_SERIF, Font.PLAIN, 26));
+        mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
         container.add(mylabel, BorderLayout.NORTH);
 
         JPanel imageContainer = new JPanel();
@@ -32,9 +33,10 @@ public class Task2 extends JFrame {
         container.add(imageContainer, BorderLayout.WEST);
 
         JPanel btnContainer = new JPanel();
-        btnContainer.setLayout(new BoxLayout(btnContainer, BoxLayout.Y_AXIS));
+        btnContainer.setLayout(new GridLayout(4, 1));
+        //btnContainer.setLayout(new BoxLayout(btnContainer, BoxLayout.Y_AXIS));
         
-        Button rotateBtn = new Button("Повернуть на 180 градусов");
+        Button rotateBtn = new Button("Повернуть на 180");
         rotateBtn.addActionListener(e -> filterImage.setFilter(Filter.ROTATE));
 
         Button grayScaleBtn = new Button("Черно-белый фильтр");

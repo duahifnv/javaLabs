@@ -1,12 +1,11 @@
-package lab7.task2;
+package lab7.elements;
 
 import javax.swing.border.Border;
 import java.awt.*;
 
 public class RoundedBorder implements Border {
-
     private int radius;
-    RoundedBorder(int radius) {
+    public RoundedBorder(int radius) {
         this.radius = radius;
     }
     public Insets getBorderInsets(Component c) {
