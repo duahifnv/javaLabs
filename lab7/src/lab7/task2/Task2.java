@@ -6,7 +6,6 @@ import lab7.elements.RoundedBorder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -32,18 +31,21 @@ public class Task2 extends JFrame {
 
         JPanel btnContainer = new JPanel();
         btnContainer.setLayout(new GridLayout(4, 1));
-        //btnContainer.setLayout(new BoxLayout(btnContainer, BoxLayout.Y_AXIS));
-        
-        Button rotateBtn = new Button("Повернуть на 180");
+
+        Button rotateBtn = new Button();
+        rotateBtn.setText("Повернуть на 180");
         rotateBtn.addActionListener(e -> filterImage.setFilter(Filter.ROTATE));
 
-        Button grayScaleBtn = new Button("Черно-белый фильтр");
+        Button grayScaleBtn = new Button();
+        grayScaleBtn.setText("Черно-белый фильтр");
         grayScaleBtn.addActionListener(e -> filterImage.setFilter(Filter.GRAYSCALE));
 
-        Button blurBtn = new Button("Заблюрить");
+        Button blurBtn = new Button();
+        blurBtn.setText("Заблюрить");
         blurBtn.addActionListener(e -> filterImage.setFilter(Filter.BLUR));
 
-        Button resetBtn = new Button("Сбросить");
+        Button resetBtn = new Button();
+        resetBtn.setText("Сбросить");
         resetBtn.addActionListener(e -> filterImage.resetFilter());
 
         btnContainer.add(rotateBtn);
@@ -52,7 +54,6 @@ public class Task2 extends JFrame {
         btnContainer.add(resetBtn);
         btnContainer.setBorder(new RoundedBorder(10));
         container.add(btnContainer, BorderLayout.EAST);
-        //SceneUtils.configFrame(jPanel);
         add(container);
 
         setSize(1280, 720);

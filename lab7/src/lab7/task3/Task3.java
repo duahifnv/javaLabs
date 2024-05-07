@@ -3,40 +3,35 @@ package lab7.task3;
 import lab7.elements.Button;
 import lab7.elements.Container;
 import lab7.elements.RoundedBorder;
-import lab7.task2.Filter;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import java.util.Objects;
 
 public class Task3 extends JFrame {
+    private BufferedImage startIcon;
+    private BufferedImage stopIcon;
     public Task3() {
         JPanel container = new Container();
         BallAnimation animation = new BallAnimation();
         container.add(animation);
-        //animation.setPreferredSize(new Dimension(300, 300));
+        JLabel mylabel = new JLabel("<html>" + "BallAnimation" + "</html>");
+        mylabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
+        container.add(mylabel, BorderLayout.NORTH);
 
         JPanel btnContainer = new JPanel();
         btnContainer.setLayout(new GridLayout(4, 1));
         //btnContainer.setLayout(new BoxLayout(btnContainer, BoxLayout.Y_AXIS));
 
-        lab7.elements.Button rotateBtn = new lab7.elements.Button("Повернуть на 180");
-        //.addActionListener(e -> filterImage.setFilter(Filter.ROTATE));
+        Button startStopBtn = new Button();
+        startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png");
 
-        lab7.elements.Button grayScaleBtn = new lab7.elements.Button("Черно-белый фильтр");
-        //grayScaleBtn.addActionListener(e -> filterImage.setFilter(Filter.GRAYSCALE));
-
-        lab7.elements.Button blurBtn = new lab7.elements.Button("Заблюрить");
-        //blurBtn.addActionListener(e -> filterImage.setFilter(Filter.BLUR));
-
-        lab7.elements.Button resetBtn = new Button("Сбросить");
-        //resetBtn.addActionListener(e -> filterImage.resetFilter());
-
-
-        btnContainer.add(rotateBtn);
-        btnContainer.add(grayScaleBtn);
-        btnContainer.add(blurBtn);
-        btnContainer.add(resetBtn);
+        btnContainer.add(startStopBtn);
         btnContainer.setBorder(new RoundedBorder(10));
 
         container.add(btnContainer, BorderLayout.EAST);
