@@ -4,6 +4,7 @@ import lab7.elements.Button;
 import lab7.elements.Container;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class Task3 extends JFrame {
@@ -20,6 +21,7 @@ public class Task3 extends JFrame {
 
         JPanel navContainer = new JPanel();
         navContainer.setLayout(new FlowLayout());
+        navContainer.setPreferredSize(new Dimension(200, 400));
 
         Button startStopBtn = new Button();
         startStopBtn.setIcon("D:\\DSTU\\ява\\lab7\\img\\assets\\start.png", IMG_RATIO);
@@ -35,6 +37,13 @@ public class Task3 extends JFrame {
             isAnimated = !isAnimated;
         });
         navContainer.add(startStopBtn);
+
+        JTextField textField = new JTextField();
+        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        TextPrompt textPrompt = new TextPrompt("Макс. число шариков", textField, TextPrompt.Show.FOCUS_LOST);
+        textField.setPreferredSize(new Dimension(200, 80));
+        textField.setBorder(new EmptyBorder(10, 10, 10, 10));
+        navContainer.add(textField);
         container.add(navContainer, BorderLayout.EAST);
         add(container);
         setSize(1280, 720);
