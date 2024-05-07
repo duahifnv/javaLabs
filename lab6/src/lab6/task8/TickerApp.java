@@ -3,9 +3,6 @@ package lab6.task8;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 import javax.swing.*;
@@ -58,5 +55,4 @@ public class TickerApp extends JPanel {
             repaint();
         }
     }
-
 }

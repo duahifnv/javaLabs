@@ -1,7 +1,5 @@
 package lab6.task3;
-import lab6.task3.Graph;
 
-import javax.swing.*;
 import java.awt.*;
 
 public class Curve {
