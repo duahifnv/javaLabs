@@ -3,9 +3,7 @@ package lab7.elements;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Objects;
 
 public class Button extends JButton {
     public Button() {
@@ -15,12 +13,14 @@ public class Button extends JButton {
         setBorder(new RoundedBorder(10));
         setBorderPainted(false);
         setFocusPainted(false);
-        setContentAreaFilled(false);
-        setPreferredSize(new Dimension(200, 50));
+        setPreferredSize(new Dimension(200, 80));
     }
-    public void setIcon(String path) {
+    public void setIcon(String path, double ratio) {
         try {
             Image img = ImageIO.read(new File(path));
+            img = img.getScaledInstance(((int) (img.getWidth(this) * ratio)),
+                                        ((int) (img.getWidth(this) * ratio)),
+                                        Image.SCALE_DEFAULT);
             setIcon(new ImageIcon(img));
         }
         catch (Exception e) {
