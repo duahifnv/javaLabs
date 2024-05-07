@@ -4,16 +4,18 @@ import lab7.elements.Button;
 import lab7.elements.Container;
 
 import javax.swing.*;
-import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
 public class Task3 extends JFrame {
     private boolean isAnimated = false;
+    static TickerApp tickerApp;
+    static BallAnimation animation;
     private final double IMG_RATIO = 0.5;
     public Task3() {
         JPanel container = new Container();
-        BallAnimation animation = new BallAnimation();
+        animation = new BallAnimation();
         container.add(animation);
+
         JLabel mylabel = new JLabel("<html>" + "BallAnimation" + "</html>");
         mylabel.setHorizontalAlignment(SwingConstants.CENTER);
         mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
@@ -41,7 +43,7 @@ public class Task3 extends JFrame {
         JTextField textField = new TextField();
         TextPrompt textPrompt = new TextPrompt("Макс. число шариков", textField, TextPrompt.Show.FOCUS_LOST);
         JLabel errorMsg = new JLabel("Неверный ввод");
-        errorMsg.setVisible(true);
+        errorMsg.setVisible(false);
         navContainer.add(textField);
         navContainer.add(errorMsg);
         textField.addActionListener(event -> {
@@ -55,10 +57,16 @@ public class Task3 extends JFrame {
                 errorMsg.setVisible(true);
             }
         });
+        String[] messages = new String[]{String.format("Шариков на экране: %d%5s", animation.getCurrentSize(), ""),
+                String.format("Максимальное число шариков: %d%5s", animation.getMaxBalls(), "")};
+        tickerApp = new TickerApp(messages);
+        tickerApp.setPreferredSize(new Dimension(200, 50));
+        tickerApp.setBackground(Color.WHITE);
+        navContainer.add(tickerApp);
         container.add(navContainer, BorderLayout.EAST);
+
         add(container);
         setSize(1280, 720);
-        //setResizable(false);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
