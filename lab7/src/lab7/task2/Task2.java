@@ -2,7 +2,6 @@ package lab7.task2;
 
 import lab7.elements.Button;
 import lab7.elements.Container;
-import lab7.elements.RoundedBorder;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -52,7 +51,6 @@ public class Task2 extends JFrame {
         btnContainer.add(grayScaleBtn);
         btnContainer.add(blurBtn);
         btnContainer.add(resetBtn);
-        btnContainer.setBorder(new RoundedBorder(10));
         container.add(btnContainer, BorderLayout.EAST);
         add(container);
 
