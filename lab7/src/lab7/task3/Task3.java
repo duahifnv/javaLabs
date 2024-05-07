@@ -38,12 +38,23 @@ public class Task3 extends JFrame {
         });
         navContainer.add(startStopBtn);
 
-        JTextField textField = new JTextField();
-        textField.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
+        JTextField textField = new TextField();
         TextPrompt textPrompt = new TextPrompt("Макс. число шариков", textField, TextPrompt.Show.FOCUS_LOST);
-        textField.setPreferredSize(new Dimension(200, 80));
-        textField.setBorder(new EmptyBorder(10, 10, 10, 10));
+        JLabel errorMsg = new JLabel("Неверный ввод");
+        errorMsg.setVisible(true);
         navContainer.add(textField);
+        navContainer.add(errorMsg);
+        textField.addActionListener(event -> {
+            try {
+                int content = Integer.parseInt(textField.getText());
+                if (content < 1) throw new NumberFormatException();
+                errorMsg.setVisible(false);
+                animation.setMaxBalls(content);
+            }
+            catch (NumberFormatException exception) {
+                errorMsg.setVisible(true);
+            }
+        });
         container.add(navContainer, BorderLayout.EAST);
         add(container);
         setSize(1280, 720);
