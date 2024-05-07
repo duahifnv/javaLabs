@@ -2,6 +2,7 @@ package lab7.task3;
 
 import lab7.elements.Button;
 import lab7.elements.Container;
+import lab7.elements.Label;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,10 +17,7 @@ public class Task3 extends JFrame {
         animation = new BallAnimation();
         container.add(animation);
 
-        JLabel mylabel = new JLabel("<html>" + "BallAnimation" + "</html>");
-        mylabel.setHorizontalAlignment(SwingConstants.CENTER);
-        mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
-        container.add(mylabel, BorderLayout.NORTH);
+        container.add(new Label("BallAnimation"), BorderLayout.NORTH);
 
         JPanel navContainer = new JPanel();
         navContainer.setLayout(new FlowLayout());

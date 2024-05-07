@@ -2,6 +2,7 @@ package lab7.task2;
 
 import lab7.elements.Button;
 import lab7.elements.Container;
+import lab7.elements.Label;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,11 +15,7 @@ public class Task2 extends JFrame {
     String imgPath = "D:\\DSTU\\ява\\lab7\\img\\5.jpg";
     public Task2() {
         JPanel container = new Container();
-
-        JLabel mylabel = new JLabel("<html>" + "Image101" + "</html>");
-        mylabel.setHorizontalAlignment(SwingConstants.CENTER);
-        mylabel.setFont(new Font(Font.SANS_SERIF, Font.BOLD, 28));
-        container.add(mylabel, BorderLayout.NORTH);
+        container.add(new Label("Image101"), BorderLayout.NORTH);
 
         JPanel imageContainer = new JPanel();
         imageContainer.setPreferredSize(new Dimension(1000, 600));
