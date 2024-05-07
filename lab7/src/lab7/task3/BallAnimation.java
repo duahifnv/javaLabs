@@ -7,6 +7,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.Random;
 
+import static lab7.task3.Task3.*;
+
 public class BallAnimation extends JPanel {
     private final ArrayList<Ball> balls = new ArrayList<>();
     private int maxBalls = 5;
@@ -23,6 +25,9 @@ public class BallAnimation extends JPanel {
                 int speed = getRandomSpeed();
                 int diameter = getRandomDiameter();
                 balls.add(new Ball(x, y, color, speed, diameter));
+                String[] messages = new String[]{String.format("Шариков на экране: %d%5s", animation.getCurrentSize(), ""),
+                        String.format("Максимальное число шариков: %d%5s", animation.getMaxBalls(), "")};
+                tickerApp.setStrings(messages);
             }
         });
         setVisible(true);
@@ -38,6 +43,9 @@ public class BallAnimation extends JPanel {
             }
         }
         this.maxBalls = maxBalls;
+        String[] messages = new String[]{String.format("Шариков на экране: %d%5s", animation.getCurrentSize(), ""),
+                String.format("Максимальное число шариков: %d%5s", animation.getMaxBalls(), "")};
+        tickerApp.setStrings(messages);
     }
     public int getCurrentSize() {
         return balls.size();
