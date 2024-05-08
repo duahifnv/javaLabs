@@ -43,6 +43,7 @@ public class SingleGraph extends JPanel {
     }
     public void setCurveColor(Color color) {
         curve.setColor(color);
+        repaint();
     }
     @Override
     public void paintComponent(Graphics g) {
