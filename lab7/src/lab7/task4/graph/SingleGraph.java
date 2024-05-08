@@ -1,14 +1,19 @@
 package lab7.task4.graph;
 
+import javax.swing.*;
 import java.awt.*;
 
-public class SingleGraph extends Graph {
+public class SingleGraph extends JPanel {
     private Curve curve;
     private Func func;
+    protected final Axis axises;
     public SingleGraph(Func func) {
+        setBackground(super.getBackground());
         this.curve = new Curve();
+        curve.setColor(super.getForeground());
         setCurve(func);
         this.func = func;
+        this.axises = new Axis();
     }
     public void setCurve(Func func) {
         double[] xData = new double[100];
