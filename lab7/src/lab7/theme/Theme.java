@@ -5,7 +5,8 @@ import java.awt.*;
 public enum Theme {
     LIGHT(Color.BLACK, Color.WHITE),
     COFFEE(new Color(0x564C41), new Color(0x1a130f)),
-    FOREST(new Color(0x2f3811), new Color(0x555c33));
+    FOREST(new Color(0x2f3811), new Color(0x555c33)),
+    DARK(new Color(0x40444b), new Color(0x202225));
     private Color foreground;
     private Color background;
     private Font font = new Font("MONTSERRAT", Font.PLAIN, 16);
