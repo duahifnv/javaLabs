@@ -12,13 +12,14 @@ public class FuncPicker extends LabelPanel {
     private Func func;
     private SingleGraph graph;
     public FuncPicker(Func func, SingleGraph graph) {
-        label = new JLabel("Функция");
-        label.setFont(new Font("MONTSERRAT", Font.PLAIN, 20));
+        this.func = func;
+        this.graph = graph;
+        label.setText("Функция");
         add(this.label);
 
         comboBox = new JComboBox<>();
-        this.func = func;
-        this.graph = graph;
+        comboBox.setBackground(super.getBackground());
+
         for (Func f : Func.values()) {
             comboBox.addItem(f);
         }
