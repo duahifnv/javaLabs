@@ -8,6 +8,5 @@ public class Container extends JPanel {
     public Container() {
         setLayout(new BorderLayout(20, 15));
         setBorder(new EmptyBorder(10, 10, 10, 10));
-        setBackground(Color.WHITE);
     }
 }
