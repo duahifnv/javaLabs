@@ -11,7 +11,7 @@ import java.awt.*;
 
 public class Task4 extends JFrame {
     public Task4() {
-        ThemeManager.initTheme(Theme.LIGHT);
+        ThemeManager.initTheme(Theme.DARK);
         JPanel container = new Container();
         container.add(new Label("Graph"), BorderLayout.NORTH);
 
@@ -20,19 +20,24 @@ public class Task4 extends JFrame {
         container.add(graph);
 
         JPanel navContainer = new JPanel();
-        navContainer.setLayout(new BoxLayout(navContainer, BoxLayout.Y_AXIS));
-        navContainer.setPreferredSize(new Dimension(200, 400));
+        navContainer.setLayout(new BoxLayout(navContainer, BoxLayout.X_AXIS));
+        navContainer.setPreferredSize(new Dimension(400, 300));
 
         FuncPicker funcPicker = new FuncPicker(Func.SIN, graph);
         navContainer.add(funcPicker);
 
         ColorPicker colorPicker = new ColorPicker();
-        colorPicker.setLabel("Цвет кривой");
+        colorPicker.setLabel("Цвет");
+        JColorChooser colorChooser = colorPicker.getColorChooser();
+        colorChooser.getSelectionModel().addChangeListener(e -> {
+            Color color = colorChooser.getColor();
+            graph.setCurveColor(color);
+        });
         navContainer.add(colorPicker);
 
-        container.add(navContainer, BorderLayout.EAST);
+        container.add(navContainer, BorderLayout.SOUTH);
         add(container);
-        setSize(1280, 720);
+        setSize(800, 720);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
