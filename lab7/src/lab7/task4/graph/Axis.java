@@ -33,11 +33,11 @@ public class Axis {
     }
 
     public void draw(Graphics2D g2d, int width, int height) {
-        g2d.drawLine(width / 2, 0, width / 2, height);
+        g2d.drawLine(0, height / 2, width, height / 2);
         g2d.drawString(xLabel, width - 20, height / 2 - 5);
         this.xMaxValue = width;
 
-        g2d.drawLine(0, height / 2, width, height / 2);
+        g2d.drawLine(width / 2, 0, width / 2, height);
         g2d.drawString(yLabel, width / 2 + 10, 20);
         this.yMaxValue = height;
     }

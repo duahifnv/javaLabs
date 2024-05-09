@@ -2,19 +2,36 @@ package lab7.task4.graph;
 
 import java.awt.*;
 
-public class Curve {
+public class Curve extends SingleGraph {
+    private final double DEFAULT_MINX = 0;
+    private final double DEFAULT_MAXX = 2 * Math.PI;
     private double[] xData;
     private double[] yData;
     private double minX, maxX, minY, maxY;
     private String label;
     private Color color = Color.BLACK;
-    public void setData(double[] xData, double[] yData) {
-        if (xData.length != yData.length) {
+    private Func func;
+    public Curve(Func func) {
+        this.func = func;
+        xData = new double[(int)(scale * 100)];
+        setForeground(super.getForeground());
+        setInterval(DEFAULT_MINX, DEFAULT_MAXX);
+    }
+    public void setInterval(double xMin, double xMax) {
+        if (xMin >= xMax) {
             throw new IllegalArgumentException();
         }
-        this.xData = xData;
-        this.yData = yData;
+        for (double x = xMin, i = 0; x < xMax && i < scale; x += (xMax-xMin) / super.scale * 100, i++) {
+            xData[(int)i] = x;
+        }
+        yData = func.getYdata(xData);
         findBounds();
+        repaint();
+    }
+    public void setFunc(Func func) {
+        this.func = func;
+        setInterval(DEFAULT_MINX, DEFAULT_MAXX);
+        repaint();
     }
     private void findBounds() {
         minX = Double.MAX_VALUE;
@@ -33,12 +50,6 @@ public class Curve {
     public void setLabel(String label) {
         this.label = label;
     }
-    public void setCoordinates(double minX, double maxX, double minY, double maxY) {
-        this.minX = minX;
-        this.maxX = maxX;
-        this.minY = minY;
-        this.maxY = maxY;
-    }
     public void setColor(Color color) {
         this.color = color;
     }
@@ -46,7 +57,6 @@ public class Curve {
         if (xData == null || yData == null) {
             return;
         }
-
         double scaleX = width / (maxX - minX);
         double scaleY = height / (maxY - minY);
         double offsetX = -minX * scaleX;

@@ -5,7 +5,6 @@ import lab7.task4.graph.Func;
 import lab7.task4.graph.SingleGraph;
 
 import javax.swing.*;
-import java.awt.*;
 
 public class FuncPicker extends LabelPanel {
     private JComboBox<Func> comboBox;
@@ -28,9 +27,10 @@ public class FuncPicker extends LabelPanel {
             Func f = comboBox.getItemAt(index);
             if (f == this.func) return;
             this.func = f;
-            graph.setCurve(f);
+            graph.getCurve().setFunc(f);
             graph.repaint();
         });
+
         add(comboBox);
     }
 }

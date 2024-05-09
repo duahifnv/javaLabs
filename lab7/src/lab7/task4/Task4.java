@@ -15,8 +15,11 @@ public class Task4 extends JFrame {
         JPanel container = new Container();
         container.add(new Label("Graph"), BorderLayout.NORTH);
 
-        SingleGraph graph = new SingleGraph(Func.SIN);
+        SingleGraph graph = new SingleGraph();
         graph.setPreferredSize(new Dimension(400, 400));
+        Curve curve = new Curve(Func.SIN);
+        curve.setColor(getForeground());
+        graph.setCurve(curve);
         container.add(graph);
 
         JPanel navContainer = new JPanel();
@@ -33,6 +36,7 @@ public class Task4 extends JFrame {
             Color color = colorChooser.getColor();
             graph.setCurveColor(color);
         });
+        graph.getCurve().setInterval(-Math.PI, 2*Math.PI);
         navContainer.add(colorPicker);
 
         container.add(navContainer, BorderLayout.SOUTH);
