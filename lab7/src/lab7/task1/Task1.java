@@ -3,6 +3,7 @@ package lab7.task1;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
+import java.awt.*;
 
 public class Task1 extends JFrame {
     private JComboBox<String> jComboBox = new JComboBox<>();
@@ -38,6 +39,7 @@ public class Task1 extends JFrame {
             }
         });
         JPanel jPanel = new JPanel();
+        jPanel.setLayout(new BoxLayout(jPanel, BoxLayout.X_AXIS));
         jPanel.add(jComboBox);
         jPanel.add(jLabel);
         jPanel.add(jButton);
