@@ -8,8 +8,6 @@ import java.io.File;
 public class Button extends JButton {
     public Button() {
         setFont(new Font(Font.SANS_SERIF, Font.BOLD, 16));
-        setForeground(Color.BLACK);
-        setBackground(Color.WHITE);
         setBorder(new RoundedBorder(10));
         setBorderPainted(false);
         setFocusPainted(false);
