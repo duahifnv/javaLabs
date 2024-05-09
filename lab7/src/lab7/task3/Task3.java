@@ -3,6 +3,8 @@ package lab7.task3;
 import lab7.elements.Button;
 import lab7.elements.Container;
 import lab7.elements.Label;
+import lab7.elements.ThemeManager;
+import lab7.theme.Theme;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,6 +15,7 @@ public class Task3 extends JFrame {
     static BallAnimation animation;
     private final double IMG_RATIO = 0.5;
     public Task3() {
+        ThemeManager.initTheme(Theme.DARK);
         JPanel container = new Container();
         animation = new BallAnimation();
         container.add(animation);
