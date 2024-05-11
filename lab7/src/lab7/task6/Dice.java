@@ -2,6 +2,8 @@ package lab7.task6;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -15,6 +17,7 @@ public class Dice extends JPanel {
     private static int CIRCLE_SIZE;
     private static int BORDER_SIZE;
     private final int borderRadius = 40;
+    private boolean isActive = true;
     public Dice(int size) {
         super();
         width = size;
@@ -27,10 +30,25 @@ public class Dice extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                value = getRandomValue();
-                repaint();
+                if (isActive) {
+                    value = getRandomValue();
+                    repaint();
+                }
             }
         });
+
+    }
+    public void switchActive() {
+        if (isActive) {
+            isActive = false;
+            setBackground(background.darker());
+            setForeground(foreground.darker());
+        }
+        else {
+            isActive = true;
+            setBackground(background.brighter());
+            setForeground(foreground.darker());
+        }
     }
     private int getRandomValue() {
         Random random = new Random();

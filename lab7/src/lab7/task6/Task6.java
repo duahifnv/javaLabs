@@ -8,6 +8,8 @@ import lab7.theme.Theme;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class Task6 extends JFrame {
     public Task6() {
@@ -22,6 +24,16 @@ public class Task6 extends JFrame {
         Dice dice = new Dice(300);
         dice.setPreferredSize(new Dimension(300, 300));
         dice.setAlignmentY(Component.CENTER_ALIGNMENT);
+        super.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                if (e.getKeyCode() == KeyEvent.VK_A) {
+                    dice.switchActive();
+                    //background = background.darker();
+                }
+            }
+        });
         diceWrapper.add(dice);
         container.add(diceWrapper, BorderLayout.CENTER);
 
@@ -52,6 +64,7 @@ public class Task6 extends JFrame {
         setMinimumSize(new Dimension(1000, 1000));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Dice");
+        setFocusable(true);
         setVisible(true);
     }
     public static void main(String[] args) {
