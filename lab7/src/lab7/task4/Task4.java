@@ -1,5 +1,6 @@
 package lab7.task4;
 
+import lab7.elements.ColorPicker;
 import lab7.elements.Container;
 import lab7.elements.Label;
 import lab7.elements.ThemeManager;
