@@ -3,7 +3,6 @@ package lab7.task1;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-import java.awt.*;
 
 public class Task1 extends JFrame {
     private JComboBox<String> jComboBox = new JComboBox<>();

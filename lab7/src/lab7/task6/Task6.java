@@ -3,7 +3,6 @@ package lab7.task6;
 import lab7.elements.*;
 import lab7.elements.Container;
 import lab7.elements.Label;
-import lab7.task5.LabelPicker;
 import lab7.theme.Theme;
 
 import javax.swing.*;

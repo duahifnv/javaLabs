@@ -1,7 +1,6 @@
 package lab7.task4;
 
 import lab7.elements.ItemPicker;
-import lab7.elements.LabelPanel;
 import lab7.task4.graph.Func;
 import lab7.task4.graph.SingleGraph;
 
