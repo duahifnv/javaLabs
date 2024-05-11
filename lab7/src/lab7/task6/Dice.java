@@ -14,7 +14,7 @@ public class Dice extends JPanel {
     private int value = getRandomValue();
     private static int CIRCLE_SIZE;
     private static int BORDER_SIZE;
-    private final int borderRadius = 40;
+    private int borderRadius = 40;
     private boolean isActive = true;
     public Dice(int cellSize) {
         setPreferredSize(new Dimension(cellSize, cellSize));
@@ -35,7 +35,6 @@ public class Dice extends JPanel {
                 }
             }
         });
-
     }
     public void switchActive() {
         if (isActive) {
@@ -60,6 +59,9 @@ public class Dice extends JPanel {
     public void setBackground(Color color) {
         this.background = color;
         repaint();
+    }
+    public void setBorderRadius(int borderRadius) {
+        this.borderRadius = borderRadius;
     }
     @Override
     public void paintComponent(Graphics g) {
