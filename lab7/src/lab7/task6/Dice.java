@@ -9,19 +9,21 @@ import java.util.Random;
 public class Dice extends JPanel {
     private static int width;
     private static int height;
-    private Color foreground = getBackground();
-    private Color background = getForeground();
+    private Color foreground;
+    private Color background;
     private int value = getRandomValue();
     private static int CIRCLE_SIZE;
     private static int BORDER_SIZE;
     private final int borderRadius = 40;
     public Dice(int size) {
+        super();
         width = size;
         height = size;
         CIRCLE_SIZE = size / 5;
         BORDER_SIZE = size / 10;
-        setVisible(true);
-        repaint();
+        Color temp = foreground;
+        foreground = background;
+        background = temp;
         addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
