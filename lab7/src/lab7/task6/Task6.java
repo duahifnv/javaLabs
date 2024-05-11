@@ -11,17 +11,18 @@ import java.awt.*;
 
 public class Task6 extends JFrame {
     public Task6() {
-        ThemeManager.initTheme(Theme.DARK);
+        ThemeManager.initTheme(Theme.COFFEE);
         Container container = new Container();
         container.setAlignmentX(CENTER_ALIGNMENT);
         container.add(new Label("Игральная кость"), BorderLayout.NORTH);
 
         JPanel diceWrapper = new JPanel();
-        diceWrapper.setLayout(new BoxLayout(diceWrapper, BoxLayout.X_AXIS));
-        diceWrapper.setPreferredSize(new Dimension(800, 400));
+        diceWrapper.setLayout(new FlowLayout());
+        diceWrapper.setMinimumSize(new Dimension(800, 400));
         Dice dice = new Dice(300);
+        dice.setPreferredSize(new Dimension(300, 300));
+        dice.setAlignmentY(Component.CENTER_ALIGNMENT);
         diceWrapper.add(dice);
-        dice.setAlignmentX(Component.CENTER_ALIGNMENT);
         container.add(diceWrapper, BorderLayout.CENTER);
 
         JPanel navContainer = new NavContainer(new Dimension(400, 300));
@@ -48,9 +49,9 @@ public class Task6 extends JFrame {
 
         container.add(navContainer, BorderLayout.SOUTH);
         add(container);
-        setSize(800, 800);
-        setResizable(false);
+        setMinimumSize(new Dimension(1000, 1000));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Dice");
         setVisible(true);
     }
     public static void main(String[] args) {
