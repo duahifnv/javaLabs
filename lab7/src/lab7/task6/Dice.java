@@ -16,12 +16,13 @@ public class Dice extends JPanel {
     private static int BORDER_SIZE;
     private final int borderRadius = 40;
     private boolean isActive = true;
-    public Dice(int size) {
-        super();
-        width = size;
-        height = size;
-        CIRCLE_SIZE = size / 5;
-        BORDER_SIZE = size / 10;
+    public Dice(int cellSize) {
+        setPreferredSize(new Dimension(cellSize, cellSize));
+        setAlignmentX(Component.CENTER_ALIGNMENT);
+        width = cellSize;
+        height = cellSize;
+        CIRCLE_SIZE = cellSize / 5;
+        BORDER_SIZE = cellSize / 10;
         Color temp = foreground;
         foreground = background;
         background = temp;

@@ -20,16 +20,13 @@ public class Task6 extends JFrame {
         JPanel diceWrapper = new JPanel();
         diceWrapper.setLayout(new FlowLayout());
         diceWrapper.setMinimumSize(new Dimension(800, 400));
-        Dice dice = new Dice(300);
-        dice.setPreferredSize(new Dimension(300, 300));
-        dice.setAlignmentY(Component.CENTER_ALIGNMENT);
-        super.addKeyListener(new KeyAdapter() {
+        Dice dice = new Dice(100);
+        addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
                 super.keyPressed(e);
                 if (e.getKeyCode() == KeyEvent.VK_A) {
                     dice.switchActive();
-                    //background = background.darker();
                 }
             }
         });
