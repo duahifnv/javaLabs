@@ -14,4 +14,10 @@ public abstract class LabelPanel extends JPanel {
     public void setLabel(String text) {
         label.setText(text);
     }
+    public void setColor(Color color) {
+        label.setForeground(color);
+    }
+    public void offsetFontSize(int size) {
+        label.setFont(label.getFont().deriveFont((float)(label.getFont().getSize() + size)));
+    }
 }
