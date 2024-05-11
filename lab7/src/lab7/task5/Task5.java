@@ -33,9 +33,7 @@ public class Task5 extends JFrame {
 
         container.add(labelBox, BorderLayout.CENTER);
 
-        JPanel navContainer = new JPanel();
-        navContainer.setLayout(new BoxLayout(navContainer, BoxLayout.X_AXIS));
-        navContainer.setPreferredSize(new Dimension(400, 300));
+        JPanel navContainer = new NavContainer(new Dimension(400, 300));
 
         LabelPicker labelPicker = new LabelPicker(labelBox);
         navContainer.add(labelPicker);

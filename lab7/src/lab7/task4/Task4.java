@@ -1,9 +1,8 @@
 package lab7.task4;
 
-import lab7.elements.ColorPicker;
+import lab7.elements.*;
 import lab7.elements.Container;
 import lab7.elements.Label;
-import lab7.elements.ThemeManager;
 import lab7.task4.graph.*;
 import lab7.theme.Theme;
 
@@ -20,10 +19,7 @@ public class Task4 extends JFrame {
         graph.setPreferredSize(new Dimension(400, 400));
         container.add(graph);
 
-        JPanel navContainer = new JPanel();
-        navContainer.setLayout(new BoxLayout(navContainer, BoxLayout.X_AXIS));
-        navContainer.setPreferredSize(new Dimension(400, 300));
-
+        JPanel navContainer = new NavContainer(new Dimension(400, 300));
         FuncPicker funcPicker = new FuncPicker(Func.SIN, graph);
         navContainer.add(funcPicker);
 
