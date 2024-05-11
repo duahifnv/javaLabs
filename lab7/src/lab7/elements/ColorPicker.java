@@ -1,12 +1,9 @@
-package lab7.task4;
+package lab7.elements;
 
 import lab7.elements.LabelPanel;
 
 import javax.swing.*;
 import javax.swing.colorchooser.AbstractColorChooserPanel;
-import javax.swing.colorchooser.ColorSelectionModel;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
 
 public class ColorPicker extends LabelPanel {
     private JColorChooser colorChooser;
@@ -19,7 +16,6 @@ public class ColorPicker extends LabelPanel {
                 colorChooser.removeChooserPanel(accp);
             }
         }
-
         colorChooser.setPreviewPanel(new JPanel());
         add(colorChooser);
     }
