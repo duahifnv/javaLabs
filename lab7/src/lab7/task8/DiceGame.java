@@ -58,7 +58,7 @@ public class DiceGame extends JFrame {
         }
         gameField[gameField.length - 1] = new Cell(Cell.State.FINISH);
         gameField[random.nextInt(length - 1)] = new Cell(Cell.State.LOSTALL);
-        gameField[random.nextInt(length)] = new Cell(Cell.State.REPEAT);
+        gameField[random.nextInt(length - 1)] = new Cell(Cell.State.REPEAT);
         return gameField;
     }
     public static void main(String[] args) {
