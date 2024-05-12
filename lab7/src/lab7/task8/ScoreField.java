@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class ScoreField extends LabelPanel {
-    private int score;
+    private int score = 0;
     private Label scoreText;
     public ScoreField(String nickname) {
         setLabel(nickname);
