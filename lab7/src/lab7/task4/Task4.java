@@ -10,12 +10,13 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Task4 extends JFrame {
+    public static SingleGraph graph;
     public Task4() {
         ThemeManager.initTheme(Theme.DARK);
         JPanel container = new Container();
         container.add(new Label("Graph"), BorderLayout.NORTH);
 
-        SingleGraph graph = new SingleGraph(Func.SIN);
+        graph = new SingleGraph(Func.SIN);
         graph.setPreferredSize(new Dimension(400, 400));
         container.add(graph);
 
