@@ -2,6 +2,8 @@ package lab7.task4.graph;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseWheelEvent;
 
 public class SingleGraph extends JPanel {
     private Curve curve;
@@ -17,8 +19,21 @@ public class SingleGraph extends JPanel {
         setCurve(func);
         this.func = func;
         this.axises = new Axis();
+        addMouseWheelListener(new MouseAdapter() {
+            @Override
+            public void mouseWheelMoved(MouseWheelEvent e) {
+                super.mouseWheelMoved(e);
+                if (e.getWheelRotation() > 0) {
+                    setInterval(++xMin, --xMax);
+                }
+                else {
+                    setInterval(--xMin, ++xMax);
+                }
+            }
+        });
     }
     public void setCurve(Func func) {
+        this.func = func;
         int dataSize = scale * 100;
         double[] xData = new double[dataSize];
         double[] yData = new double[dataSize];
