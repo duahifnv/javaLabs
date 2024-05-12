@@ -22,7 +22,8 @@ public class Task4 extends JFrame {
         JPanel navContainer = new NavContainer(new Dimension(400, 300));
         FuncPicker funcPicker = new FuncPicker(Func.SIN, graph);
         navContainer.add(funcPicker);
-
+        navContainer.add(Box.createHorizontalStrut(10));
+        navContainer.add(new IntervalField());
         ColorPicker colorPicker = new ColorPicker();
         colorPicker.setLabel("Цвет");
         JColorChooser colorChooser = colorPicker.getColorChooser();
