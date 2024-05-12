@@ -65,7 +65,7 @@ public class Cell extends LabelPanel {
         return state;
     }
     enum State {
-        LOSTALL ("Проебать все"),
+        LOSTALL ("Потерять всё"),
         REPEAT ("Повторить ход"),
         FINISH ("Конец");
         private String text;
