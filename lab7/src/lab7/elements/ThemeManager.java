@@ -13,5 +13,7 @@ public class ThemeManager {
         UIManager.put("Panel.font", theme.getFont());
         UIManager.put("Button.background", theme.getBackground());
         UIManager.put("Button.foreground", theme.getForeground());
+        UIManager.put("TextField.background", theme.getForeground());
+        UIManager.put("TextField.foreground", theme.getBackground());
     }
 }
