@@ -15,13 +15,14 @@ public class GameLogic extends DiceGame {
                 player.move(moveCount);
                 int position = player.getPosition();
                 cells[position].addPlayer(player);
+                boolean repeatFlag = false;
                 if (cells[position].getCellState() == null) {
                     player.setScore(player.getScore() + cells[position].getPoints());
                 }
                 else {
                     switch (cells[position].getCellState()) {
                         case REPEAT -> {
-                            // Выход на следующую итерацию
+                            repeatFlag = true;
                         }
                         case LOSTALL -> {
                             if (player.getScore() > 0) {
@@ -34,10 +35,12 @@ public class GameLogic extends DiceGame {
                     }
                 }
                 DiceGame.cellCore.updateFields();
-                if (!setNextPlayer()) {
-                    System.out.println("Game over");
-                    System.out.println("Победил игрок " + (getWinner() + 1));
-                    System.exit(0);
+                if (!repeatFlag) {
+                    if (!setNextPlayer()) {
+                        System.out.println("Game over");
+                        System.out.println("Победил игрок " + (getWinner() + 1));
+                        System.exit(0);
+                    }
                 }
             }
         });
