@@ -63,6 +63,9 @@ public class Dice extends JPanel {
     public void setBorderRadius(int borderRadius) {
         this.borderRadius = borderRadius;
     }
+    public int getValue() {
+        return value;
+    }
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
