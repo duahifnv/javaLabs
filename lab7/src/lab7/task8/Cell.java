@@ -1,12 +1,14 @@
 package lab7.task8;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import lab7.elements.LabelPanel;
 
 public class Cell extends LabelPanel {
     private int points;
     private State state;
+    private ArrayList<Player> playerContainer;
     public Cell(State state) {
         this.state = state;
         initCellState();
@@ -19,6 +21,7 @@ public class Cell extends LabelPanel {
         setPreferredSize(new Dimension(DiceGame.frameSize / 3, DiceGame.frameSize / 3));
         setLayout(new FlowLayout());
 
+        playerContainer = new ArrayList<>();
         offsetFontSize(3);
         setColor(Color.BLACK);
         if (state == null) {
@@ -37,6 +40,23 @@ public class Cell extends LabelPanel {
             }
             setLabel(state.getText());
         }
+    }
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        int xOffset = 0;
+        for (Player player : playerContainer) {
+            g.drawImage(player.getIcon(), xOffset, getHeight() / 2, this);
+            xOffset += 30;
+        }
+    }
+    public void addPlayer(Player player) {
+        playerContainer.add(player);
+        repaint();
+    }
+    public void removePlayer(Player player) {
+        playerContainer.remove(player);
+        repaint();
     }
     public int getPoints() {
         return points;
