@@ -10,8 +10,8 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-public class Task6 extends JFrame {
-    public Task6() {
+public class Dices extends JFrame {
+    public Dices() {
         ThemeManager.initTheme(Theme.COFFEE);
         Container container = new Container();
         container.setAlignmentX(CENTER_ALIGNMENT);
@@ -64,6 +64,6 @@ public class Task6 extends JFrame {
         setVisible(true);
     }
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(Task6::new);
+        SwingUtilities.invokeLater(Dices::new);
     }
 }

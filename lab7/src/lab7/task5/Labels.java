@@ -8,8 +8,8 @@ import lab7.theme.Theme;
 import javax.swing.*;
 import java.awt.*;
 
-public class Task5 extends JFrame {
-    public Task5() {
+public class Labels extends JFrame {
+    public Labels() {
         ThemeManager.initTheme(Theme.DARK);
         JPanel container = new Container();
         container.add(new Label("Метки"), BorderLayout.NORTH);
@@ -69,6 +69,6 @@ public class Task5 extends JFrame {
     }
 
     public static void main(String[] args) {
-        SwingUtilities.invokeLater(Task5::new);
+        SwingUtilities.invokeLater(Labels::new);
     }
 }
