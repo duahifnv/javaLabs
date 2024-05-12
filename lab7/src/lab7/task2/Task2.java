@@ -3,6 +3,8 @@ package lab7.task2;
 import lab7.elements.Button;
 import lab7.elements.Container;
 import lab7.elements.Label;
+import lab7.elements.ThemeManager;
+import lab7.theme.Theme;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,6 +16,7 @@ import java.io.IOException;
 public class Task2 extends JFrame {
     String imgPath = "D:\\DSTU\\ява\\lab7\\img\\5.jpg";
     public Task2() {
+        ThemeManager.initTheme(Theme.DARK);
         JPanel container = new Container();
         container.add(new Label("Image101"), BorderLayout.NORTH);
 
