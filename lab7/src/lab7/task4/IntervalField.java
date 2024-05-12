@@ -29,7 +29,9 @@ public class IntervalField extends LabelPanel {
             try {
                 double from = Double.parseDouble(fromField.getText());
                 double to = Double.parseDouble(toField.getText());
+                if (from > to) throw new NumberFormatException();
                 errorMsg.setVisible(false);
+                Task4.graph.setInterval(from, to);
             }
             catch (NumberFormatException | NullPointerException ne) {
                 errorMsg.setVisible(true);
