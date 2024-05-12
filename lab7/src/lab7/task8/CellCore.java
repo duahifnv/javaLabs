@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class CellCore extends LabelPanel {
     private int size;
+    private ScoreField[] fields;
     public CellCore() {
         size = DiceGame.frameSize / 3;
         setPreferredSize(new Dimension(size, size));
@@ -17,14 +18,19 @@ public class CellCore extends LabelPanel {
         JPanel diceWrapper = new JPanel();
         diceWrapper.setLayout(new FlowLayout());
         diceWrapper.setMinimumSize(new Dimension(size / 5, size / 5));
-        Dice dice = new Dice(size / 5);
+        Dice dice = DiceGame.dice;
         dice.setBorderRadius(20);
         diceWrapper.add(dice);
         add(diceWrapper);
-        ScoreField first = new ScoreField("Player 1");
-        first.setScore(20);
-        ScoreField second = new ScoreField("Player 2");
-        add(first);
-        add(second);
+        fields = new ScoreField[DiceGame.players.length];
+        for (int i = 0; i < fields.length; i++) {
+            fields[i] = new ScoreField("Player " + (i + 1));
+            add(fields[i]);
+        }
+    }
+    public void updateFields() {
+        for (int i = 0; i < fields.length; i++) {
+            fields[i].setScore(DiceGame.players[i].getScore());
+        }
     }
 }
