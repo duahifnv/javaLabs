@@ -1,6 +1,7 @@
 package lab7.task8;
 
 import lab7.elements.ThemeManager;
+import lab7.task6.Dice;
 import lab7.theme.Theme;
 
 import javax.swing.*;
@@ -11,21 +12,34 @@ public class DiceGame extends JFrame {
     // Field: size x size
     protected static final int size = 3;
     protected static final int frameSize = 600;
-    protected static Cell[] vectorField;
+    protected static Cell[] cells;
+    protected static Player[] players = new Player[Players.values().length];
+    protected static int[] playersScores;
+    protected static int playerToMove = 0;
+    protected static Dice dice = new Dice(frameSize / 3 / 5);
+    protected static CellCore cellCore;
     public DiceGame() {
         ThemeManager.initTheme(Theme.DARK);
         setLayout(new GridLayout(3,3));
-        vectorField = setField();
+        cells = setField();
 
         for (int i = 0; i < 3; i++) {
-            add(vectorField[i]);
+            add(cells[i]);
         }
-        add(vectorField[7]);
-        add(new CellCore());
-        add(vectorField[3]);
+        add(cells[7]);
+        cellCore = new CellCore();
+        add(cellCore);
+        add(cells[3]);
         for (int i = 6; i > 3; i--) {
-            add(vectorField[i]);
+            add(cells[i]);
         }
+        for (int i = 0; i < players.length; i++) {
+            Player player = new Player(Players.values()[i].getIconPath());
+            players[i] = player;
+            cells[0].addPlayer(player);
+        }
+        playersScores = new int[Players.values().length];
+        GameLogic.run();
         setMinimumSize(new Dimension(frameSize, frameSize));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("DiceGame");
@@ -49,5 +63,16 @@ public class DiceGame extends JFrame {
     }
     public static void main(String[] args) {
         SwingUtilities.invokeLater(DiceGame::new);
+    }
+}
+enum Players {
+    PLAYER1("D:\\DSTU\\ява\\lab7\\img\\chips\\blue_chip.png"),
+    PLAYER2("D:\\DSTU\\ява\\lab7\\img\\chips\\red_chip.png");
+    private String path;
+    Players(String path) {
+        this.path = path;
+    }
+    public String getIconPath() {
+        return path;
     }
 }
