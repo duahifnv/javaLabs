@@ -21,7 +21,7 @@ public class DicesBeanInfo extends SimpleBeanInfo {
         }
     }
     public DicesBeanInfo() {
-        if(icon == null) loadImage("D:\\DSTU\\ява\\lab7\\img\\icons\\label.svg");
+        if(icon == null) loadImage("D:\\DSTU\\ява\\lab7\\img\\icons\\dice.svg");
         /* путь относительно .сlass файла */
     }
     public Image getImage(int type) {
