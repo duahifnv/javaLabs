@@ -23,7 +23,7 @@ public class SingleGraph extends JPanel {
             @Override
             public void mouseWheelMoved(MouseWheelEvent e) {
                 super.mouseWheelMoved(e);
-                if (e.getWheelRotation() > 0) {
+                if (e.getWheelRotation() < 0) {
                     setInterval(++xMin, --xMax);
                 }
                 else {
