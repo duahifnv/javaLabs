@@ -7,6 +7,9 @@ public class SingleGraph extends JPanel {
     private Curve curve;
     private Func func;
     protected final Axis axises;
+    private double xMin = -Math.PI;
+    private double xMax = Math.PI;
+    private int scale = 1;
     public SingleGraph(Func func) {
         setBackground(super.getBackground());
         this.curve = new Curve();
@@ -16,24 +19,25 @@ public class SingleGraph extends JPanel {
         this.axises = new Axis();
     }
     public void setCurve(Func func) {
-        double[] xData = new double[100];
-        double[] yData = new double[100];
+        int dataSize = scale * 100;
+        double[] xData = new double[dataSize];
+        double[] yData = new double[dataSize];
+        for (double x = xMin, i = 0; x < xMax && i < dataSize; x += (xMax-xMin) / dataSize, i++) {
+            xData[(int)i] = x;
+        }
         switch (func) {
             case SIN -> {
-                for (int i = 0; i < 100; i++) {
-                    xData[i] = i * 2 * Math.PI / 100;
+                for (int i = 0; i < dataSize; i++) {
                     yData[i] = Math.sin(xData[i]);
                 }
             }
             case SINCOS -> {
-                for (int i = 0; i < 100; i++) {
-                    xData[i] = i * 2 * Math.PI / 100;
+                for (int i = 0; i < dataSize; i++) {
                     yData[i] = Math.sin(xData[i]*xData[i]) + Math.cos(xData[i]*xData[i]);
                 }
             }
             case SINCOS2 -> {
-                for (int i = 0; i < 100; i++) {
-                    xData[i] = i * 2 * Math.PI / 100;
+                for (int i = 0; i < dataSize; i++) {
                     yData[i] = 2 * Math.sin(xData[i]) + Math.cos(2 * xData[i]);
                 }
             }
@@ -43,6 +47,12 @@ public class SingleGraph extends JPanel {
     }
     public void setCurveColor(Color color) {
         curve.setColor(color);
+        repaint();
+    }
+    public void setInterval(double xMin, double xMax) {
+        this.xMin = xMin;
+        this.xMax = xMax;
+        setCurve(func);
         repaint();
     }
     @Override
